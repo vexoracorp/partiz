@@ -1,5 +1,6 @@
 import { LucideIcon } from "lucide-react";
 import Link from "next/link";
+import { ClipLoader } from "react-spinners";
 
 import styles from "./styles.module.scss";
 
@@ -23,18 +24,17 @@ export default function Button({
   href_link,
 }: ButtonProps) {
   return (
-    <Link href={href_link}>
-      <div
+    <Link href={href_link ?? "#"} style={{ textDecoration: "none" }}>
+      <button
         className={[styles.container, className].join(" ")}
-        onClick={() => {
-          if (disabled || isLoading) return;
-
-          if (onClick) {
-            onClick();
-          }
+        disabled={disabled || isLoading}
+        onClick={(e) => {
+          if (disabled || isLoading) e.preventDefault();
+          else if (onClick) onClick();
         }}
         style={{
           backgroundColor: disabled || isLoading ? "#CACACA" : "#45C1FF",
+          cursor: disabled || isLoading ? "not-allowed" : "pointer",
         }}
       >
         {isLoading ? (
@@ -45,7 +45,7 @@ export default function Button({
             {Icon && <Icon color={"#fff"} width={28} height={28} />}
           </>
         )}
-      </div>
+      </button>
     </Link>
   );
 }

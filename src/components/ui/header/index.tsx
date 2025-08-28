@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import Subscription from "@/app/subscription/page";
 import Button from "@/components/ui/button";
 import HeaderItem from "@/components/ui/header/header-item";
 

@@ -27,14 +27,16 @@
   height: 40px;
     border-radius: 14px;
     transition: background-color 0.1s ease-in-out;
-    p {
-      color: var(--Text-white, #FFF);
-      font-family: Pretendard;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 140%;
-    }
+  border: none;
+  p{
+    color: var(--Text-white, #FFF);
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    color: #fff;
+  }
 
     &:active {
         background-color: #1E5BD7;

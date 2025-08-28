@@ -14,7 +14,7 @@ interface ButtonProps {
 }
 
 export default function Button({
-  icon: icon,
+  icon: Icon,
   text,
   onClick,
   className,
@@ -42,7 +42,7 @@ export default function Button({
         ) : (
           <>
             {text && <p style={{ color: "#fff" }}>{text}</p>}
-            <icon icon={icon} color={"#fff"} width={28} height={28} />
+            {Icon && <Icon color={"#fff"} width={28} height={28} />}
           </>
         )}
       </div>

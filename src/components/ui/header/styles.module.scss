@@ -1,0 +1,42 @@
+.header{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  margin-top:16px ;
+  margin-bottom:16px ;
+}
+
+.right{
+  display:flex;
+  flex-direction:row;
+  gap:40px;
+  align-items:center;
+}
+.menu{
+  display:flex;
+  flex-direction:row;
+  gap:20px;
+  align-items:center;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+  height: 40px;
+    border-radius: 14px;
+    transition: background-color 0.1s ease-in-out;
+    p {
+      color: var(--Text-white, #FFF);
+      font-family: Pretendard;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%;
+    }
+
+    &:active {
+        background-color: #1E5BD7;
+    }
+}

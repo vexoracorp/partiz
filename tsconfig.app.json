@@ -30,7 +30,8 @@
     },
     "types": [
       "node"
-    ]
+    ],
+    "allowJs": true,
   },
   "include": ["src", "eslint.config.js"]
 }

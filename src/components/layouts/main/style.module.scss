@@ -1,0 +1,11 @@
+.mainLayout {
+    width: min(100%, $max-width);
+
+    margin: 0 auto;
+    padding-inline: $padding;
+    background-color: $color-surface;
+    
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-100;
+}

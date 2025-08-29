@@ -1,0 +1,148 @@
+.button {
+    display: inline-flex;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  
+    transition: all 0.2s ease-in-out;
+    
+    &:focus {
+      outline: none;
+    }
+  
+    &:active {
+      border: 0;
+      transform: scale(0.92);
+    }
+  
+    // Size variants
+    &.medium {
+      padding: 10px 16px;
+      font-size: 14px;
+      line-height: 1.4;
+      border-radius: 14px;
+  
+      .leadingIcon,
+      .trailingIcon {
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+  
+      &.fullWidth {
+        width: 100%;
+      }
+    }
+  
+    &.large {
+      padding: 14px 24px;
+      font-size: 16px;
+      line-height: 1.5;
+  
+      .leadingIcon,
+      .trailingIcon {
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+  
+      &.fullWidth {
+        width: 100%;
+      }
+    }
+  
+    // Variant styles
+    &.primary {
+      background-color: $color-surface-brand;
+      color: white;
+    }
+  
+    &.secondary {
+      background-color: $color-white;
+      color: $color-text;
+
+      border: 1px solid $color-border;
+    }
+  
+    // Disabled state
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+      
+      &.primary {
+        background-color: $color-surface-brand-subtle;
+      }
+      
+      &.secondary {
+        background-color: $color-surface-subtle;
+        color: $color-text-subtle;
+      }
+    }
+  
+    // Pending state
+    &.pending {
+      cursor: wait;
+      
+      .hiddenContent {
+        opacity: 0;
+      }
+    }
+  }
+  
+  // Button content layout
+  .buttonContent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .text {
+    flex: 1;
+  }
+  
+  .leadingIcon,
+  .trailingIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .hiddenContent {
+    @extend .buttonContent;
+    opacity: 0;
+  }
+  
+  // Spinner animation
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }

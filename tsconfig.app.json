@@ -27,7 +27,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "types": [
+      "node"
+    ]
   },
   "include": ["src", "eslint.config.js"]
 }

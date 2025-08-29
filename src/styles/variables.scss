@@ -1,0 +1,58 @@
+// Design Tokens - SCSS Variables
+
+// Padding
+$padding: 24px;
+
+// Max Width
+$max-width: 1440px;
+
+// Spacing Scale
+$spacing-4: 4px;
+$spacing-6: 6px;
+$spacing-8: 8px;
+$spacing-10: 10px;
+$spacing-12: 12px;
+$spacing-14: 14px;
+$spacing-16: 16px;
+$spacing-24: 24px;
+$spacing-32: 32px;
+$spacing-40: 40px;
+$spacing-48: 48px;
+$spacing-64: 64px;
+$spacing-100: 100px;
+
+// Radius Scale
+$radius-4: 4px;
+$radius-8: 8px;
+$radius-10: 10px;
+$radius-12: 12px;
+$radius-14: 14px;
+$radius-16: 16px;
+$radius-20: 20px;
+$radius-32: 32px;
+$radius-64: 64px;
+$radius-full: 9999px;
+
+// Color Palette
+// Text Colors
+$color-text: #151515;
+$color-text-subtle: #7D7D7D;
+$color-text-white: #FFFFFF;
+
+// Brand Text Colors
+$color-text-brand: #45C1FF;
+$color-text-brand-heavy: #0D8FCF;
+$color-text-brand-subtle: #EAF8FF;
+
+// Surface Colors
+$color-surface: #FFFFFF;
+$color-surface-subtle: #F5F5F5;
+
+// Brand Surface Colors
+$color-surface-brand: #45C1FF;
+$color-surface-brand-heavy: #0D8FCF;
+$color-surface-brand-subtle: #EAF8FF;
+
+// Border Colors
+$color-border: #E0E0E0;
+$color-border-subtle: #EFEFEF;

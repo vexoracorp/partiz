@@ -1,4 +1,3 @@
-// eslint.config.js (ESM)
 import js from '@eslint/js';
 import globals from 'globals';
 import * as tseslint from 'typescript-eslint';

@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import { MainLayout } from "@/components/layouts";
+import { Input } from "@/components/ui";
 import Button from "@/components/ui/button";
 import Checkbox from "@/components/ui/checkbox";
 import Modal from "@/components/ui/modal";
@@ -15,14 +16,15 @@ const Home = () => {
       <Spacing size={16} />
       <Button variant="secondary">Click me</Button>
       <Checkbox label="Checkbox" />
-      <Modal
+      {/* <Modal
         open={true}
         onOpenChange={() => {}}
         title="Modal"
         header={<div>Header</div>}
       >
         <p>Modal</p>
-      </Modal>
+      </Modal> */}
+      <Input label="Input" />
     </MainLayout>
   );
 };

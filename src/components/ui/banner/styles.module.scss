@@ -1,6 +1,6 @@
 .swiper {
   width: min(100%, 1392px);
-  height: 450px;
+  height: 424px;
   margin: 0 auto;
   position: relative;
 }
@@ -8,7 +8,7 @@
 :global {
   .swiper-pagination {
     position: absolute !important;
-    bottom: $spacing-16 !important;
+    bottom: 0 !important;
     width: 100%;
     text-align: center;
   }

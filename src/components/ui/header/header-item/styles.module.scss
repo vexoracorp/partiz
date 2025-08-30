@@ -1,7 +1,7 @@
 .container{
   display: flex;
   align-items: center;
-  gap: var(--Spacing-8, 8px);
+  gap: $spacing-8;
   text-decoration: none;
 }
 
@@ -12,7 +12,3 @@
   font-weight: 600;
   line-height: normal;
 }
-
-//.icon, .text {
-//  transition: all 0.2s ease;
-//}

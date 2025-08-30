@@ -7,17 +7,17 @@ interface HeaderItemProps {
   text: string;
   icon: LucideIcon;
   isActive?: boolean;
-  href_link: string;
+  href: string;
 }
 
 export default function HeaderItem({
   text,
   icon: Icon,
   isActive = false,
-  href_link,
+  href,
 }: HeaderItemProps) {
   return (
-    <Link to={href_link} className={s.container}>
+    <Link to={href} className={s.container}>
       <Icon
         className={s.icon}
         style={{ color: isActive ? "#151515" : "#7D7D7D" }}

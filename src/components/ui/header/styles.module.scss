@@ -1,36 +1,33 @@
 .header{
-  //background-color: purple;
-  width: 100vw;
-  height: 74px;
+  width: 100%;
+  min-height: 74px;
+  box-sizing: border-box;
   display:  flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  align-self: stretch;
+  gap: $spacing-10;
 }
 
 .header_content{
-  //background-color: orange;
   display:  flex;
   flex-direction: row;
   width: 100%;
-  max-width: 1440px;
-  padding: 24px;
+  max-width: $max-width;
+  padding: 0 $spacing-24;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
 }
 
 .right{
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 40px;
+  gap: $spacing-40;
 }
 
 .items{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 32px;
+    gap: $spacing-32;
 }

@@ -20,26 +20,26 @@ export default function Header() {
               height="26"
             />
           </Link>
-          <div className={s.items}>
+          <nav className={s.items} aria-label="주요 메뉴">
             <HeaderItem
               text={"홈"}
               icon={Home}
-              href_link={"/"}
+              href={"/"}
               isActive={pathname === "/"}
             />
             <HeaderItem
               text={"컨텐츠"}
               icon={ListVideo}
-              href_link={"/my-contents"}
+              href={"/my-contents"}
               isActive={pathname.startsWith("/my-contents")}
             />
             <HeaderItem
               text={"내 구독"}
               icon={LayoutGrid}
-              href_link={"/subscription"}
+              href={"/subscription"}
               isActive={pathname.startsWith("/subscription")}
             />
-          </div>
+          </nav>
         </div>
         <Button size="medium" variant="primary">
           로그인

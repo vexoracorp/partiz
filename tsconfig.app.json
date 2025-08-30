@@ -33,5 +33,5 @@
     ],
     "allowJs": true,
   },
-  "include": ["src", "eslint.config.js"]
+  "include": ["src", "swiper-css.d.ts", "eslint.config.js"]
 }

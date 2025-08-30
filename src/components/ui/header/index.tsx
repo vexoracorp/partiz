@@ -5,6 +5,11 @@ import { Button } from "@/components/ui";
 import HeaderItem from "@/components/ui/header/header-item";
 
 import s from "./styles.module.scss";
+/**
+ * Top navigation header with logo, primary actions, and page-aware navigation items.
+ *
+ * Renders the site logo (linking to "/"), three navigation items ("홈", "컨텐츠", "내 구독") whose active states are derived from the current router pathname, and a primary "로그인" button.
+ */
 export default function Header() {
   const { pathname } = useLocation();
   return (

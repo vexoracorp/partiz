@@ -34,6 +34,7 @@ export default function Banner() {
             imageUrl={item.imageUrl}
             imageAlt={item.imageAlt}
             href={item.href}
+            backgroundColor={item.backgroundColor}
           />
         </SwiperSlide>
       ))}

@@ -2,6 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import s from "./styles.module.scss";
+import Typo from "../../typo";
 
 interface HeaderItemProps {
   text: string;
@@ -33,12 +34,12 @@ export default function HeaderItem({
         className={s.icon}
         style={{ color: isActive ? "#151515" : "#7D7D7D" }}
       />
-      <span
+      <Typo.Body
         className={s.text}
         style={{ color: isActive ? "#151515" : "#7D7D7D" }}
       >
         {text}
-      </span>
+      </Typo.Body>
     </Link>
   );
 }

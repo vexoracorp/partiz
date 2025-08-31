@@ -1,0 +1,23 @@
+.swiper {
+  width: min(100%, 1392px);
+  height: 424px;
+  margin: 0 auto;
+  position: relative;
+}
+
+:global {
+  .swiper-pagination {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100%;
+    text-align: center;
+  }
+  .swiper-pagination-bullet {
+    background-color: #E0E0E0 !important;
+    opacity: 0.7 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #7D7D7D !important;
+    opacity: 1 !important;
+  }
+}

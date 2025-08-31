@@ -1,45 +1,46 @@
 .container{
-  width: 100%;
-  max-width: 1392px;
+  width: min(100%, $max-width);
   display: flex;
-  height: 400px;
-  padding: 0 var(--Spacing-100, 100px);
+  height: 320px;
+  padding: 0 $spacing-100;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
   border-radius: $radius-20;
+  text-decoration: none;
 }
 
 .textContainer{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
   white-space: pre-line;
-  width: 464px;
-  height: 196px;
-  gap: 22px;
+  word-break: keep-all;
+
+  width: 50%;
+  
+  gap: $spacing-24;
   .title{
-    font-family: Pretendard;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
     line-height: 140%;
+
+    margin: 0;
   }
-  .description{
-    font-family: Pretendard;
-    font-size: 22px;
-    font-style: normal;
+  .description {
+    font-size: 18px;
     font-weight: 500;
     line-height: 140%;
+
+    margin: 0;
   }
 }
 
 .imageContainer{
-  width: 380px;
-  height: 330px;
-  border-radius: $radius-20;
-    overflow: hidden;
+  max-width: 400px;
+  height: 250px;
+  border-radius: $radius-12;
+  overflow: hidden;
 }
 
 .imageContainer img {

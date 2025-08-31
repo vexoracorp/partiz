@@ -1,0 +1,14 @@
+.container{
+  display: flex;
+  align-items: center;
+  gap: $spacing-8;
+  text-decoration: none;
+}
+
+.text{
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

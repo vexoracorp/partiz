@@ -1,15 +1,13 @@
 import { MainLayout } from "@/components/layouts";
 import { Header } from "@/components/ui";
 
-const Home = () => {
+export default function Subscription() {
   return (
     <>
       <Header />
       <MainLayout>
-        <p>나야 배너</p>
+        <p>나야 Subscription</p>
       </MainLayout>
     </>
   );
-};
-
-export default Home;
+}

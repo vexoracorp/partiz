@@ -4,3 +4,4 @@ export { default as Header } from "./header";
 export { default as Input } from "./input";
 export { default as Modal } from "./modal";
 export { default as Spacing } from "./spacing";
+export { default as Typo } from "./typo";

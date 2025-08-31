@@ -6,7 +6,7 @@ import { Header } from "@/components/ui";
  *
  * Renders a Header followed by MainLayout containing a paragraph with the text "나야 my-contents".
  */
-export default function MyContent() {
+export default function Content() {
   return (
     <>
       <Header />

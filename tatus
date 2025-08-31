@@ -1,0 +1,215 @@
+[1mdiff --git a/public/image/netf.jpg b/public/image/netf.jpg[m
+[1mdeleted file mode 100644[m
+[1mindex 5a440b8..0000000[m
+Binary files a/public/image/netf.jpg and /dev/null differ
+[1mdiff --git a/public/image/plave.png b/public/image/plave.png[m
+[1mdeleted file mode 100644[m
+[1mindex 0fee116..0000000[m
+Binary files a/public/image/plave.png and /dev/null differ
+[1mdiff --git a/src/components/home/banner/banner-item/index.tsx b/src/components/home/banner/banner-item/index.tsx[m
+[1mindex 763e5b4..759a173 100644[m
+[1m--- a/src/components/home/banner/banner-item/index.tsx[m
+[1m+++ b/src/components/home/banner/banner-item/index.tsx[m
+[36m@@ -27,22 +27,17 @@[m [mexport default function BannerItem({[m
+   const descriptionColor = getContrastDescriptionColor(bgColor);[m
+ [m
+   return ([m
+[31m-    <a href={href} rel="noopener noreferrer">[m
+[31m-      <div[m
+[31m-        className={s.container}[m
+[31m-        style={{ backgroundColor: bgColor }}[m
+[31m-      >[m
+[31m-        <div className={s.textContainer}>[m
+[31m-          <h2 className={s.title} style={{ color: textColor }}>[m
+[31m-            {title}[m
+[31m-          </h2>[m
+[31m-          <p className={s.description} style={{ color: descriptionColor }}>[m
+[31m-            {description}[m
+[31m-          </p>[m
+[31m-        </div>[m
+[31m-        <div className={s.imageContainer}>[m
+[31m-          <img src={imageUrl} alt={imageAlt} />[m
+[31m-        </div>[m
+[32m+[m[32m    <a href={href} rel="noopener noreferrer" className={s.container} style={{ backgroundColor: bgColor }}>[m
+[32m+[m[32m      <div className={s.textContainer}>[m
+[32m+[m[32m        <h2 className={s.title} style={{ color: textColor }}>[m
+[32m+[m[32m          {title}[m
+[32m+[m[32m        </h2>[m
+[32m+[m[32m        <p className={s.description} style={{ color: descriptionColor }}>[m
+[32m+[m[32m          {description}[m
+[32m+[m[32m        </p>[m
+[32m+[m[32m      </div>[m
+[32m+[m[32m      <div className={s.imageContainer}>[m
+[32m+[m[32m        <img src={imageUrl} alt={imageAlt} />[m
+       </div>[m
+     </a>[m
+   );[m
+[1mdiff --git a/src/components/home/banner/banner-item/styles.module.scss b/src/components/home/banner/banner-item/styles.module.scss[m
+[1mindex c460e6c..7427951 100644[m
+[1m--- a/src/components/home/banner/banner-item/styles.module.scss[m
+[1m+++ b/src/components/home/banner/banner-item/styles.module.scss[m
+[36m@@ -1,45 +1,46 @@[m
+ .container{[m
+[31m-  width: 100%;[m
+[31m-  max-width: 1392px;[m
+[32m+[m[32m  width: min(100%, $max-width);[m
+   display: flex;[m
+[31m-  height: 400px;[m
+[31m-  padding: 0 var(--Spacing-100, 100px);[m
+[32m+[m[32m  height: 320px;[m
+[32m+[m[32m  padding: 0 $spacing-100;[m
+   justify-content: space-between;[m
+   align-items: center;[m
+   align-self: stretch;[m
+   border-radius: $radius-20;[m
+[32m+[m[32m  text-decoration: none;[m
+ }[m
+ [m
+ .textContainer{[m
+   display: flex;[m
+   flex-direction: column;[m
+[31m-  justify-content: center;[m
+   align-items: flex-start;[m
+   white-space: pre-line;[m
+[31m-  width: 464px;[m
+[31m-  height: 196px;[m
+[31m-  gap: 22px;[m
+[32m+[m[32m  word-break: keep-all;[m
+[32m+[m
+[32m+[m[32m  width: 50%;[m
+[32m+[m[41m  [m
+[32m+[m[32m  gap: $spacing-24;[m
+   .title{[m
+[31m-    font-family: Pretendard;[m
+[31m-    font-size: 40px;[m
+[31m-    font-style: normal;[m
+[31m-    font-weight: 700;[m
+[32m+[m[32m    font-size: 30px;[m
+[32m+[m[32m    font-weight: 600;[m
+     line-height: 140%;[m
+[32m+[m
+[32m+[m[32m    margin: 0;[m
+   }[m
+[31m-  .description{[m
+[31m-    font-family: Pretendard;[m
+[31m-    font-size: 22px;[m
+[31m-    font-style: normal;[m
+[32m+[m[32m  .description {[m
+[32m+[m[32m    font-size: 18px;[m
+     font-weight: 500;[m
+     line-height: 140%;[m
+[32m+[m
+[32m+[m[32m    margin: 0;[m
+   }[m
+ }[m
+ [m
+ .imageContainer{[m
+[31m-  width: 380px;[m
+[31m-  height: 330px;[m
+[31m-  border-radius: $radius-20;[m
+[31m-    overflow: hidden;[m
+[32m+[m[32m  max-width: 400px;[m
+[32m+[m[32m  height: 250px;[m
+[32m+[m[32m  border-radius: $radius-12;[m
+[32m+[m[32m  overflow: hidden;[m
+ }[m
+ [m
+ .imageContainer img {[m
+[1mdiff --git a/src/components/home/banner/index.tsx b/src/components/home/banner/index.tsx[m
+[1mindex 1c03955..aea7428 100644[m
+[1m--- a/src/components/home/banner/index.tsx[m
+[1m+++ b/src/components/home/banner/index.tsx[m
+[36m@@ -21,7 +21,7 @@[m [mexport default function Banner() {[m
+       keyboard={{ enabled: true }}[m
+       loop={true}[m
+       autoplay={{[m
+[31m-        delay: 3000,[m
+[32m+[m[32m        delay: 4000,[m
+         disableOnInteraction: false,[m
+         pauseOnMouseEnter: true,[m
+       }}[m
+[1mdiff --git a/src/components/home/banner/styles.module.scss b/src/components/home/banner/styles.module.scss[m
+[1mindex 33013f7..e474e4e 100644[m
+[1m--- a/src/components/home/banner/styles.module.scss[m
+[1m+++ b/src/components/home/banner/styles.module.scss[m
+[36m@@ -1,6 +1,6 @@[m
+ .swiper {[m
+[31m-  width: min(100%, 1392px);[m
+[31m-  height: 424px;[m
+[32m+[m[32m  width: min(100%, $max-width);[m
+[32m+[m[32m  height: 350px;[m
+   margin: 0 auto;[m
+   position: relative;[m
+ }[m
+[1mdiff --git a/src/components/ui/header/header-item/styles.module.scss b/src/components/ui/header/header-item/styles.module.scss[m
+[1mindex 1fd3604..9cb53e0 100644[m
+[1m--- a/src/components/ui/header/header-item/styles.module.scss[m
+[1m+++ b/src/components/ui/header/header-item/styles.module.scss[m
+[36m@@ -6,9 +6,11 @@[m
+ }[m
+ [m
+ .text{[m
+[31m-  font-family: Pretendard;[m
+   font-size: 18px;[m
+[31m-  font-style: normal;[m
+   font-weight: 600;[m
+[31m-  line-height: normal;[m
+ }[m
+[32m+[m
+[32m+[m[32m.icon {[m
+[32m+[m[32m  width: 20px;[m
+[32m+[m[32m  height: 20px;[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/components/ui/header/index.tsx b/src/components/ui/header/index.tsx[m
+[1mindex e0de7b2..b62d951 100644[m
+[1m--- a/src/components/ui/header/index.tsx[m
+[1m+++ b/src/components/ui/header/index.tsx[m
+[36m@@ -16,8 +16,8 @@[m [mexport default function Header() {[m
+               className={s.logo}[m
+               src="/partiz.svg"[m
+               alt="logo"[m
+[31m-              width="94"[m
+[31m-              height="26"[m
+[32m+[m[32m              width="77"[m
+[32m+[m[32m              height="22"[m
+             />[m
+           </Link>[m
+           <nav className={s.items} aria-label="주요 메뉴">[m
+[1mdiff --git a/src/components/ui/header/styles.module.scss b/src/components/ui/header/styles.module.scss[m
+[1mindex c42dfe0..eca1199 100644[m
+[1m--- a/src/components/ui/header/styles.module.scss[m
+[1m+++ b/src/components/ui/header/styles.module.scss[m
+[36m@@ -9,11 +9,11 @@[m
+ }[m
+ [m
+ .header_content{[m
+[31m-  display:  flex;[m
+[32m+[m[32m  display: flex;[m
+   flex-direction: row;[m
+   width: 100%;[m
+   max-width: $max-width;[m
+[31m-  padding: 0 $spacing-24;[m
+[32m+[m[32m  padding: 0 $padding;[m
+   justify-content: space-between;[m
+   align-items: center;[m
+ }[m
+[1mdiff --git a/src/mock/banner/index.ts b/src/mock/banner/index.ts[m
+[1mindex aff6a1f..21e2ddd 100644[m
+[1m--- a/src/mock/banner/index.ts[m
+[1m+++ b/src/mock/banner/index.ts[m
+[36m@@ -1,37 +1,27 @@[m
+ const bannerData = [[m
+   {[m
+[31m-    title: "음질 끝판왕 타이달 파티 오픈!\n" + "파티즈에서 월 5천원대",[m
+[31m-    description: "음질 끝판왕 타이달 파티 오픈!\n" + "파티즈에서 월 5천원대",[m
+[31m-    imageUrl: "/image/plave.png",[m
+[32m+[m[32m    title: "음질 끝판왕 타이달 파티 오픈!\n파티즈에서 월 5천원대",[m
+[32m+[m[32m    description: "음질 끝판왕 타이달 파티 오픈!\n파티즈에서 월 5천원대",[m
+[32m+[m[32m    imageUrl: "/image/tidal.png",[m
+     imageAlt: "Banner 1 image",[m
+     href: "/",[m
+     backgroundColor: "#19191C",[m
+   },[m
+   {[m
+[31m-    title: "🐰 뉴진스 음악도 타이달로!",

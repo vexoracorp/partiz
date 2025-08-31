@@ -16,8 +16,8 @@ export default function Header() {
               className={s.logo}
               src="/partiz.svg"
               alt="logo"
-              width="94"
-              height="26"
+              width="77"
+              height="22"
             />
           </Link>
           <nav className={s.items} aria-label="주요 메뉴">

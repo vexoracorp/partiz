@@ -1,6 +1,6 @@
 .swiper {
-  width: min(100%, 1392px);
-  height: 424px;
+  width: min(100%, $max-width);
+  height: 350px;
   margin: 0 auto;
   position: relative;
 }

@@ -9,11 +9,11 @@
 }
 
 .header_content{
-  display:  flex;
+  display: flex;
   flex-direction: row;
   width: 100%;
   max-width: $max-width;
-  padding: 0 $spacing-24;
+  padding: 0 $padding;
   justify-content: space-between;
   align-items: center;
 }

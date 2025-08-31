@@ -1,6 +1,6 @@
 import { MainLayout } from "@/components/layouts";
 import { Header } from "@/components/ui";
-import Banner from "@/components/ui/banner";
+import Banner from "@/components/home/banner";
 
 const Home = () => {
   return (

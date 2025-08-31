@@ -1,7 +1,7 @@
 import { Autoplay, Keyboard, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import BannerItem from "@/components/ui/banner/banner-item";
+import BannerItem from "@/components/home/banner/banner-item";
 
 import bannerData from "../../../mock/banner/index.ts";
 

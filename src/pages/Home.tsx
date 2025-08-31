@@ -9,7 +9,6 @@ const Home = () => {
 
       <MainLayout>
         <Banner />
-        <p>나야 배너</p>
       </MainLayout>
     </>
   );

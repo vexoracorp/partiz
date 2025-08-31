@@ -33,11 +33,11 @@ const Typo = <T extends React.ElementType = 'span'>({
 };
 
 // 개별 타이포그래피 컴포넌트들
-Typo.Display = (props: Omit<TypoProps, 'variant'>) => <Typo variant="display" {...props} />;
-Typo.Headline = (props: Omit<TypoProps, 'variant'>) => <Typo variant="headline" {...props} />;
-Typo.BodyLarge = (props: Omit<TypoProps, 'variant'>) => <Typo variant="bodyLarge" {...props} />;
-Typo.Body = (props: Omit<TypoProps, 'variant'>) => <Typo variant="body" {...props} />;
-Typo.Subtext = (props: Omit<TypoProps, 'variant'>) => <Typo variant="subtext" {...props} />;
-Typo.Caption = (props: Omit<TypoProps, 'variant'>) => <Typo variant="caption" {...props} />;
+Typo.Display = (props: any) => <Typo variant="display" {...props} />;
+Typo.Headline = (props: any) => <Typo variant="headline" {...props} />;
+Typo.BodyLarge = (props: any) => <Typo variant="bodyLarge" {...props} />;
+Typo.Body = (props: any) => <Typo variant="body" {...props} />;
+Typo.Subtext = (props: any) => <Typo variant="subtext" {...props} />;
+Typo.Caption = (props: any) => <Typo variant="caption" {...props} />;
 
 export default Typo;

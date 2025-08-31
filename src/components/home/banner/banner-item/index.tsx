@@ -4,6 +4,7 @@ import {
 } from "@/utils/colorUtils";
 
 import s from "./styles.module.scss";
+import { Typo } from "@/components/ui";
 
 export interface BannerItemProps {
   title: string;
@@ -29,12 +30,12 @@ export default function BannerItem({
   return (
     <a href={href} rel="noopener noreferrer" className={s.container} style={{ backgroundColor: bgColor }}>
       <div className={s.textContainer}>
-        <h2 className={s.title} style={{ color: textColor }}>
+        <Typo.Headline as="h2" className={s.title} style={{ color: textColor }}>
           {title}
-        </h2>
-        <p className={s.description} style={{ color: descriptionColor }}>
+        </Typo.Headline>
+        <Typo.Body as="p" className={s.description} style={{ color: descriptionColor }}>
           {description}
-        </p>
+        </Typo.Body>
       </div>
       <div className={s.imageContainer}>
         <img src={imageUrl} alt={imageAlt} />

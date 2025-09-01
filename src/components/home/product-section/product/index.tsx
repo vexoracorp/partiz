@@ -2,7 +2,7 @@ import s from "./styles.module.scss";
 
 export interface ProductProps {
   title: string;
-  price: string;
+  price: number;
   imageUrl: string;
   imageAlt: string;
 }
@@ -18,7 +18,7 @@ export default function Product({
       <img src={imageUrl} alt={imageAlt} />
       <div className={s.text_container}>
         <h3 className={s.title}>{title}</h3>
-        <p className={s.price}>{price}</p>
+        <p className={s.price}>{price.toLocaleString()}원</p>
       </div>
     </div>
   );

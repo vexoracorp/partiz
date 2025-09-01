@@ -2,13 +2,15 @@ import { useState } from "react";
 
 import Category from "@/components/home/product-section/category";
 import Product from "@/components/home/product-section/product";
-import { getProductsByCategory } from "@/mock/product";
+import { MockProducts } from "@/mock/product";
+import { filteredCategories } from "@/utils/category";
+import { getMinPlanPrice } from "@/utils/product";
 
 import s from "./styles.module.scss";
 
 export default function ProductSection() {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const filteredProducts = getProductsByCategory(selectedCategory);
+  const filteredProducts = filteredCategories(MockProducts, selectedCategory);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
@@ -32,10 +34,10 @@ export default function ProductSection() {
         {filteredProducts.map((product) => (
           <Product
             key={product.id}
-            title={product.title}
-            price={product.price}
-            imageUrl={product.imageUrl}
-            imageAlt={product.imageAlt}
+            title={product.name}
+            price={getMinPlanPrice(product.plan)}
+            imageUrl={product.image}
+            imageAlt={product.name}
           />
         ))}
       </div>

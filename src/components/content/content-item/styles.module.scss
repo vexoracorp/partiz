@@ -1,33 +1,22 @@
-.info {
-    padding: 0vh;
+.contentItem {
+    text-decoration: none;
+
     display: flex;
     flex-direction: column;
+    gap: 14px;
 }
 
 .image {
-    display: block;
     aspect-ratio: 9 / 13;
     object-fit: cover;
-    width: 15vw;
-    border-radius: 10px;
+    width: 175px;
+    border-radius: $radius-10;
 }
 
 .title {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #151515;
+    color: $color-text;
 }
 
 .rating {
-    display: flex;
-    align-items: center;
-    margin-top: -1vh;
-    color: #7D7D7D;
-}
-
-.ratingIcon {
-    margin-right: 4px;
+    color: $color-text-subtle;
 }

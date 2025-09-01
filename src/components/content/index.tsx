@@ -1,20 +1,26 @@
 import ContentItem from "@/components/content/content-item";
 import contentData from "@/mock/content/index.ts";
 
+import { HStack, Typo, VStack } from "../ui";
+
 import "@/components/content/content-item/styles.module.scss";
 import s from "@/components/content/styles.module.scss";
 
 export default function Content() {
   return (
-    <div className={s.SectionContainer}>
-      {contentData.map((item, idx) => (
-        <ContentItem
-          key={idx}
-          title={item.title}
-          imageUrl={item.imageUrl}
-          rating={item.rating}
-        />
-      ))}
-    </div>
+    <VStack className={s.container}>
+      <Typo.Display>파티즈가 추천하는 컨텐츠</Typo.Display>
+      <div className={s.sectionContainer}>
+        {contentData.map((item, idx) => (
+          <ContentItem
+            key={idx}
+            title={item.title}
+            imageUrl={item.imageUrl}
+            rating={item.rating}
+            href={item.href}
+          />
+        ))}
+      </div>
+    </VStack>
   );
 }

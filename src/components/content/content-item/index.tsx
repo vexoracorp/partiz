@@ -1,4 +1,6 @@
-import styles from "@/components/content/content-item/styles.module.scss";
+import { FlexAlign, HStack, Typo, VStack } from "@/components/ui";
+
+import s from "./styles.module.scss";
 
 export interface ContentItemProps {
   title: string;
@@ -14,15 +16,15 @@ export default function ContentItem({
   href,
 }: ContentItemProps) {
   return (
-    <a href={href} className={styles.contentItem}>
-      <img src={imageUrl} className={styles.image} alt={title} />
-      <div className={styles.info}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.rating}>
-          <img src="/star.svg" className={styles.ratingIcon} alt="Rating" />{" "}
-          {rating}
-        </p>
-      </div>
+    <a href={href} className={s.contentItem}>
+      <img src={imageUrl} className={s.image} alt={title} />
+      <VStack>
+        <Typo.Body className={s.title}>{title}</Typo.Body>
+        <HStack align={FlexAlign.Center} gap={4}>
+          <img src="/star.svg" alt="Rating" />{" "}
+          <Typo.Subtext className={s.rating}>{rating}</Typo.Subtext>
+        </HStack>
+      </VStack>
     </a>
   );
 }

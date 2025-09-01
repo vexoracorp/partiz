@@ -11,7 +11,7 @@ const bannerData = [
     title: "인기만점 F1 더 무비\n지금 바로 넷플릭스에서",
     description:
       "F1 레이싱의 스릴과 드라마를 담은 최고의 영화를 넷플릭스에서 만나보세요",
-    imageUrl: "/image/f1.webp",
+    imageUrl: "/image/banner/f1.webp",
     imageAlt: "Banner 1 image",
     href: "/",
     backgroundColor: "#354546",

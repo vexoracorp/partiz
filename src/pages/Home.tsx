@@ -1,4 +1,4 @@
-import Content from "@/components/content";
+import Content from "@/components/content/recommend-list";
 import Banner from "@/components/home/banner";
 import { MainLayout } from "@/components/layouts";
 import { Header } from "@/components/ui";

@@ -1,10 +1,10 @@
-import ContentItem from "@/components/content/content-item";
 import contentData from "@/mock/content/index.ts";
 
-import { Typo, VStack } from "../ui";
+import { Typo, VStack } from "../../ui";
 
-import "@/components/content/content-item/styles.module.scss";
-import s from "@/components/content/styles.module.scss";
+import ContentItem from "./content-item";
+
+import s from "./styles.module.scss";
 
 export default function Content() {
   return (

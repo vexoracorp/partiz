@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 
-import Content from "@/components/content";
+import Content from "@/components/content/recommend-list";
 import { MainLayout } from "@/components/layouts";
 import { PartyCard, ProductHeader } from "@/components/product";
 import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";

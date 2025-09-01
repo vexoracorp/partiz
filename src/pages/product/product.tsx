@@ -1,8 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 
 import { MainLayout } from "@/components/layouts";
-import { PartyCard } from "@/components/party";
-import ProductHeader from "@/components/product/product-header";
+import { PartyCard, ProductHeader } from "@/components/product";
 import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
 import { MockParty } from "@/mock/party";
 

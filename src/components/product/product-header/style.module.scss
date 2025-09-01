@@ -1,8 +1,14 @@
 .container {
     width: 100%;
 
+    justify-content: space-between;
     align-items: center;
     gap: 24px;
+}
+
+.left {
+    gap: $spacing-24;
+    align-items: center;
 }
 
 .image {

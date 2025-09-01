@@ -1,0 +1,16 @@
+@import "@/styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-10;
+
+  span {
+    color: $color-text-subtle;
+  }
+}
+
+.descriptionText {
+  white-space: pre-line;
+  line-height: 1.6;
+}

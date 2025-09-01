@@ -8,7 +8,7 @@
   gap: 10px;
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: $radius-10;
   transition: transform 0.2s ease-in-out;
 
   background-color: $color-surface-brand;
@@ -24,8 +24,25 @@
   }
 
   &--lg {
-    width: 48px;
-    height: 48px;
+    width: 70px;
+    height: 70px;
+
+    border-radius: $spacing-20;
+
+    .avatarCircle {
+        width: 22px;
+        height: 30px;
+
+        border-width: 2.5px;
+    }
+
+    .avatarPupil {
+        width: 14px;
+        height: 14px;
+
+        top: 5px;
+        left: 8px;
+    }
   }
 
   &[data-disabled="true"] {
@@ -68,39 +85,4 @@
   position: absolute;
   top: 2.5px;
   left: 4px;
-}
-
-// 반응형 디자인
-@media (max-width: 768px) {
-  .avatar {
-    width: 36px;
-    height: 36px;
-
-    &--sm {
-      width: 28px;
-      height: 28px;
-    }
-
-    &--lg {
-      width: 44px;
-      height: 44px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .avatar {
-    width: 32px;
-    height: 32px;
-
-    &--sm {
-      width: 24px;
-      height: 24px;
-    }
-
-    &--lg {
-      width: 40px;
-      height: 40px;
-    }
-  }
 }

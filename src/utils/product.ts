@@ -55,3 +55,13 @@ export const getCheapestPlan = (product: Product): Plan | null => {
     return currentPrice < cheapestPrice ? current : cheapest;
   });
 };
+
+/**
+ * Product 배열에서 ID로 특정 상품을 찾습니다.
+ */
+export const findProductById = (
+  products: Product[],
+  id: string,
+): Product | undefined => {
+  return products.find((product) => product.id === id);
+};

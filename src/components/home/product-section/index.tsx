@@ -32,13 +32,7 @@ export default function ProductSection() {
       />
       <div className={s.product_container}>
         {filteredProducts.map((product) => (
-          <Product
-            key={product.id}
-            title={product.name}
-            price={getMinPlanPrice(product.plan)}
-            imageUrl={product.image}
-            imageAlt={product.name}
-          />
+          <Product {...product} />
         ))}
       </div>
     </div>

@@ -6,8 +6,11 @@
     gap: $spacing-16;
     padding: 20px;
     border-radius: $radius-20;
-    border: 1px solid var(--border-default, #E0E0E0);
-    background: var(--Surface-default, #FFF);
+    border: 1px solid $color-border;
+    background: $color-surface;
+
+    text-decoration: none;
+
     img{
         width: 45px;
         height: 45px;

@@ -5,12 +5,28 @@ import { MainLayout } from "@/components/layouts";
 import { PartyCard, ProductHeader } from "@/components/product";
 import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
 import { MockParty } from "@/mock/party";
+import { MockProducts } from "@/mock/product";
+import { isStreamingProduct } from "@/utils/category";
+import { findProductById } from "@/utils/product";
 
 export default function Product() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const tag = ["AI", "OpenAI", "GPT", "OTT"];
+  // URL 파라미터로 실제 상품 찾기
+  const product = findProductById(MockProducts, id || "");
+
+  if (!product) {
+    return (
+      <>
+        <Header />
+        <Spacing size={25} />
+        <MainLayout gap={42}>
+          <Typo.Headline>상품을 찾을 수 없습니다.</Typo.Headline>
+        </MainLayout>
+      </>
+    );
+  }
 
   return (
     <>
@@ -18,26 +34,27 @@ export default function Product() {
       <Spacing size={25} />
       <MainLayout gap={42}>
         <ProductHeader
-          title="ChatGPT Plus"
+          title={product.name}
           partyCount={MockParty.length.toString()}
-          tag={tag}
-          image="/image/chatgpt.jpg"
+          tag={product.category}
+          image={product.bannerImage}
         />
 
         <VStack fullWidth gap={24}>
-          <Typo.Headline as="h2">ChatGPT Plus 파티</Typo.Headline>
+          <Typo.Headline as="h2">{product.name} 파티</Typo.Headline>
           <HStack gap={24} wrap>
-            {MockParty.map((party) => (
+            {product.plan.map((party) => (
               <PartyCard
                 key={party.id}
                 party={party}
+                productImage={product.image}
                 onClick={() => navigate(`/product/${id}/party/${party.id}`)}
               />
             ))}
           </HStack>
         </VStack>
         <Spacing size={25} />
-        {tag.includes("OTT") && <Content />}
+        {isStreamingProduct(product) && <Content />}
       </MainLayout>
     </>
   );

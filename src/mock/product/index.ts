@@ -1,15 +1,79 @@
 import { Category } from "@/types/category";
-import type { Product } from "@/types/product";
+import type { Participant, Product } from "@/types/product";
 
 const createDate = (iso: string) => new Date(iso);
+
+// 참여자 목 데이터 생성을 위한 이름 목록
+const mockNames = [
+  "김철수",
+  "이영희",
+  "박민수",
+  "최지영",
+  "정현우",
+  "한소희",
+  "강동원",
+  "송혜교",
+  "이병헌",
+  "전지현",
+  "차태현",
+  "김하늘",
+  "원빈",
+  "고현정",
+  "김우빈",
+  "수지",
+  "박보검",
+  "김고은",
+  "공유",
+  "김태희",
+  "현빈",
+  "손예진",
+  "이민호",
+  "박신혜",
+  "이종석",
+  "한효주",
+  "남주혁",
+  "이성경",
+  "박서준",
+  "김지원",
+  "지창욱",
+  "남지현",
+  "서인국",
+  "정은지",
+  "윤시윤",
+  "박민영",
+  "김재중",
+  "구하라",
+  "이홍기",
+  "설현",
+];
+
+// 랜덤 참여자 생성 함수
+const createRandomParticipants = (count: number): Participant[] => {
+  const shuffledNames = [...mockNames].sort(() => Math.random() - 0.5);
+  return Array.from({ length: count }, (_, index) => ({
+    id: `participant_${Date.now()}_${index}`,
+    name: shuffledNames[index % shuffledNames.length],
+    joinedAt: createDate(
+      new Date(
+        Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000,
+      ).toISOString(),
+    ),
+  }));
+};
 
 const createPlan = (
   id: string,
   name: string,
   price: number,
   discountRate = 10,
+  participantCount?: number,
 ) => {
   const discountPrice = Math.round(price * (1 - discountRate / 100));
+  const maxParticipants = 4;
+  // participantCount가 지정되지 않은 경우 0-3 사이의 랜덤한 수
+  const actualParticipantCount =
+    participantCount ?? Math.floor(Math.random() * maxParticipants);
+
   return {
     id,
     name,
@@ -17,8 +81,8 @@ const createPlan = (
     price,
     discountPrice,
     discountRate,
-    participants: [],
-    maxParticipants: 4,
+    participants: createRandomParticipants(actualParticipantCount),
+    maxParticipants,
     endDate: createDate("2025-12-31"),
     createdAt: createDate("2024-01-01"),
     updatedAt: createDate("2024-06-01"),
@@ -36,7 +100,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_ai_001", "Standard", 20000)],
+    plan: [createPlan("pl_ai_001", "Standard", 20000, 10, 2)],
     createdAt: createDate("2024-01-10"),
     updatedAt: createDate("2024-06-10"),
   },
@@ -49,7 +113,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_ai_002", "Standard", 25000)],
+    plan: [createPlan("pl_ai_002", "Standard", 25000, 10, 4)],
     createdAt: createDate("2024-01-11"),
     updatedAt: createDate("2024-06-11"),
   },
@@ -62,7 +126,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_ai_003", "Standard", 30000)],
+    plan: [createPlan("pl_ai_003", "Standard", 30000, 10, 1)],
     createdAt: createDate("2024-01-13"),
     updatedAt: createDate("2024-06-13"),
   },
@@ -75,7 +139,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: false,
     mostUsedProduct: true,
-    plan: [createPlan("pl_ai_004", "Standard", 20000)],
+    plan: [createPlan("pl_ai_004", "Standard", 20000, 10, 3)],
     createdAt: createDate("2024-01-14"),
     updatedAt: createDate("2024-06-14"),
   },
@@ -88,7 +152,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_ai_005", "Standard", 24000)],
+    plan: [createPlan("pl_ai_005", "Standard", 24000, 10, 0)],
     createdAt: createDate("2024-01-15"),
     updatedAt: createDate("2024-06-15"),
   },
@@ -194,7 +258,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_music_001", "Standard", 13900)],
+    plan: [createPlan("pl_music_001", "Standard", 13900, 10, 3)],
     createdAt: createDate("2024-02-01"),
     updatedAt: createDate("2024-06-20"),
   },
@@ -207,7 +271,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_music_002", "Standard", 10900)],
+    plan: [createPlan("pl_music_002", "Standard", 10900, 10, 2)],
     createdAt: createDate("2024-02-02"),
     updatedAt: createDate("2024-06-21"),
   },
@@ -313,7 +377,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_stream_001", "Premium", 17000)],
+    plan: [createPlan("pl_stream_001", "Premium", 17000, 10, 4)],
     createdAt: createDate("2024-03-01"),
     updatedAt: createDate("2024-06-28"),
   },
@@ -326,7 +390,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_stream_002", "Standard", 9900)],
+    plan: [createPlan("pl_stream_002", "Standard", 9900, 10, 1)],
     createdAt: createDate("2024-03-02"),
     updatedAt: createDate("2024-06-29"),
   },
@@ -445,7 +509,7 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_edu_001", "Standard", 49000)],
+    plan: [createPlan("pl_edu_001", "Standard", 49000, 10, 2)],
     createdAt: createDate("2024-04-01"),
     updatedAt: createDate("2024-07-08"),
   },

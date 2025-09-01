@@ -132,7 +132,7 @@ export const MockProducts: Product[] = [
   },
   {
     id: "p_ai_005",
-    name: "Google One AI Premium",
+    name: "Google One",
     image: "/image/product/chatgpt.png",
     bannerImage: "/image/chatgpt.jpg",
     category: [Category.AI],
@@ -173,7 +173,7 @@ export const MockProducts: Product[] = [
   },
   {
     id: "p_music_004",
-    name: "YouTube Music Premium",
+    name: "YouTube Music",
     image: "/image/product/chatgpt.png",
     bannerImage: "/image/banner/spotify.jpg",
     category: [Category.MUSIC],

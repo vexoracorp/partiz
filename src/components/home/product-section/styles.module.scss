@@ -17,24 +17,9 @@
   align-self: stretch;
   margin: 0;
 
-  .title{
-    color: #000;
-    font-family: Pretendard;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 140%;
-    margin: 0;
-  }
   .description{
-    color: #7D7D7D;
+    color: $color-text-subtle;
     text-align: center;
-    font-family: Pretendard;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 26px;
-    margin: 0;
   }
 }
 

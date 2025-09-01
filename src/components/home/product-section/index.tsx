@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Category from "@/components/home/product-section/category";
 import Product from "@/components/home/product-section/product";
+import { Typo } from "@/components/ui";
 import { MockProducts } from "@/mock/product";
 import { filteredCategories } from "@/utils/category";
 
@@ -18,12 +19,12 @@ export default function ProductSection() {
   return (
     <div className={s.container}>
       <div className={s.title_container}>
-        <h2 className={s.title}>골라 담는 구독 서비스</h2>
-        <p className={s.description}>
+        <Typo.Display className={s.title}>골라 담는 구독 서비스</Typo.Display>
+        <Typo.BodyLarge className={s.description}>
           파티즈에서 취향과 필요에 맞춰 골라 담고,
           <br />
           합리적인 가격으로 즐기세요
-        </p>
+        </Typo.BodyLarge>
       </div>
       <Category
         onCategoryChange={handleCategoryChange}

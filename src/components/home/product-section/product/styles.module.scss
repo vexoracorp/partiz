@@ -37,15 +37,12 @@
     }
 
     .price{
-        color: var(--Text-default, #151515);
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 20px;
-
         color: $color-text-subtle;
 
         b {
             color: $color-text-brand;
+
+            font-weight: 600;
         }
     }
 }

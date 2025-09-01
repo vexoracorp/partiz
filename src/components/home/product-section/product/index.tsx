@@ -12,9 +12,9 @@ export default function Product(props: Product) {
       <img src={image} alt={name} />
       <VStack gap={8} className={s.text_container}>
         <Typo.BodyLarge className={s.title}>{name}</Typo.BodyLarge>
-        <Typo.Subtext className={s.price}>
+        <Typo.Body className={s.price}>
           최저가 <b>{getMinPlanPrice(plan).toLocaleString()}원</b>
-        </Typo.Subtext>
+        </Typo.Body>
       </VStack>
     </a>
   );

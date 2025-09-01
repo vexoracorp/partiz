@@ -1,0 +1,119 @@
+@import '../../../styles/variables.scss';
+
+.party {
+  width: 100%;
+  max-width: 370px;
+}
+
+.partyCard {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-20;
+  padding: $spacing-20;
+  border: 1px solid $color-border;
+  border-radius: 20px;
+  background: $color-surface;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.partyInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-16;
+  width: 100%;
+}
+
+.partyInfoLeft {
+  display: flex;
+  align-items: center;
+  gap: $spacing-10;
+}
+
+.logo {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  object-fit: cover;
+}
+
+.avatars {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  color: $color-text-subtle;
+}
+// 반응형 디자인
+@media (max-width: 768px) {
+  .partyCard {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .avatars {
+    gap: 8px;
+  }
+
+  .footer {
+    gap: 16px;
+  }
+
+  .endDate,
+  .remainingSpots {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partyCard {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .partyInfo {
+    gap: 12px;
+  }
+
+  .partyInfoLeft {
+    gap: 8px;
+  }
+
+  .logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .avatars {
+    gap: 6px;
+  }
+}

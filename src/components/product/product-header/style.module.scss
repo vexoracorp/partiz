@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+
+    align-items: center;
+    gap: 24px;
+}
+
+.image {
+    width: 75px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+
+    border-radius: $radius-20;
+}
+
+.content {
+    gap: $spacing-4;
+
+    h1, p {
+        margin: 0;
+    }
+    p {
+        color: $color-text-subtle;
+    }
+}

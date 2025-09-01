@@ -5,4 +5,20 @@
     width: min(100%, $max-width);
     margin: 0 auto;
     overflow-x: auto;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: sticky;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 8rem;
+        background: linear-gradient(to left, white, transparent);
+        pointer-events: none;
+        flex-shrink: 0;
+    }
 }
+
+
+

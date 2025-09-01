@@ -19,7 +19,7 @@ export default function ContentItem({
     <a href={href} className={s.contentItem}>
       <img src={imageUrl} className={s.image} alt={title} />
       <VStack>
-        <Typo.Body className={s.title}>{title}</Typo.Body>
+        <Typo.BodyLarge className={s.title}>{title}</Typo.BodyLarge>
         <HStack align={FlexAlign.Center} gap={4}>
           <img src="/star.svg" alt="Rating" />{" "}
           <Typo.Subtext className={s.rating}>{rating}</Typo.Subtext>

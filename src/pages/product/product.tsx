@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 
+import Content from "@/components/content";
 import { MainLayout } from "@/components/layouts";
 import { PartyCard, ProductHeader } from "@/components/product";
 import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
@@ -9,6 +10,8 @@ export default function Product() {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const tag = ["AI", "OpenAI", "GPT", "OTT"];
+
   return (
     <>
       <Header />
@@ -17,7 +20,7 @@ export default function Product() {
         <ProductHeader
           title="ChatGPT Plus"
           partyCount={MockParty.length.toString()}
-          tag={["AI", "OpenAI", "GPT"]}
+          tag={tag}
           image="/image/chatgpt.jpg"
         />
 
@@ -33,6 +36,8 @@ export default function Product() {
             ))}
           </HStack>
         </VStack>
+        <Spacing size={25} />
+        {tag.includes("OTT") && <Content />}
       </MainLayout>
     </>
   );

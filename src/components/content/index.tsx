@@ -1,7 +1,7 @@
 import ContentItem from "@/components/content/content-item";
 import contentData from "@/mock/content/index.ts";
 
-import { HStack, Typo, VStack } from "../ui";
+import { Typo, VStack } from "../ui";
 
 import "@/components/content/content-item/styles.module.scss";
 import s from "@/components/content/styles.module.scss";
@@ -17,7 +17,7 @@ export default function Content() {
             title={item.title}
             imageUrl={item.imageUrl}
             rating={item.rating}
-            href={item.href}
+            href={`/contents/${item.id}`}
           />
         ))}
       </div>

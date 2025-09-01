@@ -5,4 +5,5 @@ export { default as ProductCard } from "./product-card";
 export { default as ProductDescription } from "./product-description";
 export { default as ProductHeader } from "./product-header";
 export { default as ProductInfo } from "./product-info";
+export { default as ProductQuestion } from "./product-question";
 export { default as RelatedProducts } from "./related-products";

@@ -2,7 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Content from "@/components/content/recommend-list";
 import { MainLayout } from "@/components/layouts";
-import { PartyCard, ProductHeader } from "@/components/product";
+import {
+  PartyCard,
+  ProductHeader,
+  ProductQuestion,
+} from "@/components/product";
 import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
 import { MockParty } from "@/mock/party";
 import { MockProducts } from "@/mock/product";
@@ -54,6 +58,7 @@ export default function Product() {
           </HStack>
         </VStack>
         <Spacing size={25} />
+        <ProductQuestion {...product} />
         {isStreamingProduct(product) && <Content />}
       </MainLayout>
     </>

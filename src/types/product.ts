@@ -27,6 +27,7 @@ export interface Plan {
 export interface Product {
   id: string;
   name: string;
+  serviceName: string;
   image: string;
   bannerImage: string;
 
@@ -40,4 +41,9 @@ export interface Product {
 
   createdAt: Date;
   updatedAt: Date;
+
+  question: {
+    description: string;
+    images: string[];
+  };
 }

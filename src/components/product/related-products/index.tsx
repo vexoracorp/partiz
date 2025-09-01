@@ -57,7 +57,7 @@ export default function RelatedProducts({
           >
             <div key={relatedProduct.id} className={styles.productCard}>
               <img
-                src={relatedProduct.image}
+                src={relatedProduct.bannerImage}
                 alt={relatedProduct.name}
                 className={styles.productImage}
               />

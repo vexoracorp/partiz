@@ -1,3 +1,5 @@
+import { CategoryWithIcon } from "@/types/category";
+
 import s from "./styles.module.scss";
 
 interface CategoryProps {
@@ -11,19 +13,11 @@ export default function Category({
 }: CategoryProps) {
   const categories = [
     { id: "all", name: "전체", image: "/image/category/all.png" },
-    {
-      id: "streaming",
-      name: "스트리밍",
-      image: "/image/category/streaming.png",
-    },
-    { id: "ai", name: "AI", image: "/image/category/ai.png" },
-    { id: "music", name: "뮤직", image: "/image/category/music.png" },
-    { id: "education", name: "교육", image: "/image/category/education.png" },
-    {
-      id: "software",
-      name: "소프트웨어",
-      image: "/image/category/software.png",
-    },
+    ...CategoryWithIcon.map(({ title, icon }) => ({
+      id: title,
+      name: title,
+      image: icon.startsWith("/image/") ? icon : `/image${icon}`,
+    })),
   ];
 
   const handleCategoryClick = (categoryId: string) => {

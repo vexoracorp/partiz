@@ -2,7 +2,7 @@ const contentData = [
   {
     id: "f1",
     title: "F1 더 무비",
-    imageUrl: "/image/f1.webp",
+    imageUrl: "/image/banner/f1.webp",
     rating: "9.6",
   },
   {

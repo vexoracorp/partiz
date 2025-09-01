@@ -1,9 +1,9 @@
-import { ProductSection } from "@/components/home";
 import Content from "@/components/content/recommend-list";
+import { ProductSection } from "@/components/home";
 import Banner from "@/components/home/banner";
 import { MainLayout } from "@/components/layouts";
 import { ProductCard } from "@/components/product";
-import { Header, HStack, Typo, VStack } from "@/components/ui";
+import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
 
 export default function Home() {
   return (
@@ -12,7 +12,6 @@ export default function Home() {
 
       <MainLayout>
         <Banner />
-        <ProductSection />
         <VStack fullWidth gap={24}>
           <Typo.Display>바로 가입 가능한 파티</Typo.Display>
           <HStack fullWidth wrap gap={20}>
@@ -53,8 +52,10 @@ export default function Home() {
             />
           </HStack>
         </VStack>
+        <Spacing size={25} />
+        <ProductSection />
         <Content />
       </MainLayout>
     </>
   );
-};
+}

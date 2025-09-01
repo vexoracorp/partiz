@@ -1,8 +1,9 @@
 import type { LucideIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import s from "./styles.module.scss";
 import Typo from "../../typo";
+
+import s from "./styles.module.scss";
 
 interface HeaderItemProps {
   text: string;

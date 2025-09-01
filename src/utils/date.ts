@@ -39,10 +39,10 @@ export const getRemainingDays = (targetDate: Date): number => {
 export const getPartyEndDateText = (endDate: Date): string => {
   const remainingDays = getRemainingDays(endDate);
   const formattedDate = formatKoreanDate(endDate);
-  
+
   if (remainingDays <= 0) {
     return `${formattedDate}까지(마감)`;
   }
-  
+
   return `${formattedDate}까지(${remainingDays}일)`;
 };

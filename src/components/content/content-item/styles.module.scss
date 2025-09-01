@@ -1,0 +1,22 @@
+.contentItem {
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.image {
+    aspect-ratio: 9 / 13;
+    object-fit: cover;
+    width: 175px;
+    border-radius: $radius-10;
+}
+
+.title {
+    color: $color-text;
+}
+
+.rating {
+    color: $color-text-subtle;
+}

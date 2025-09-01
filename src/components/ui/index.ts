@@ -4,5 +4,5 @@ export { default as Header } from "./header";
 export { default as Input } from "./input";
 export { default as Modal } from "./modal";
 export { default as Spacing } from "./spacing";
+export { FlexAlign, FlexJustify, HStack, VStack } from "./stack";
 export { default as Typo } from "./typo";
-export { HStack, VStack, FlexAlign, FlexJustify } from "./stack";

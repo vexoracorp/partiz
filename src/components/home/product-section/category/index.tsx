@@ -1,3 +1,4 @@
+import { Typo } from "@/components/ui";
 import { CategoryWithIcon } from "@/types/category";
 
 import s from "./styles.module.scss";
@@ -33,7 +34,7 @@ export default function Category({
           onClick={() => handleCategoryClick(category.id)}
         >
           <img src={category.image} alt={category.name} />
-          <p>{category.name}</p>
+          <Typo.Subtext>{category.name}</Typo.Subtext>
         </div>
       ))}
     </div>

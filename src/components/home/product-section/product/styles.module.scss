@@ -11,6 +11,12 @@
 
     text-decoration: none;
 
+    &:hover{
+        background-color: $color-surface-subtle;
+
+        cursor: pointer;
+    }
+
     img{
         width: 60px;
         height: 60px;

@@ -30,11 +30,6 @@
     transition: all 0.3s ease;
   }
   
-  p {
-    margin: 4px 0 0 0;
-    font-size: 12px;
-  }
-  
   &.selected {
     border-bottom: 3px solid var(--Text-brand-default, #45C1FF);
     

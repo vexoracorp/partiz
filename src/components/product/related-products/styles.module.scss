@@ -16,6 +16,10 @@
   }
 }
 
+.productCardContainer {
+  text-decoration: none;
+}
+
 .productImage {
   width: 260px;
   aspect-ratio: 16/9;
@@ -23,4 +27,6 @@
   overflow: hidden;
 
   object-fit: cover;
+
+  color: $color-text;
 }

@@ -1,23 +1,21 @@
 import { Typo } from "@/components/ui";
+import type { Plan } from "@/types/product";
 
 import styles from "./styles.module.scss";
 
 interface ProductInfoProps {
-  cost: number;
-  endDate: string;
-  daysLeft: number;
+  plan: Plan;
 }
 
-export default function ProductInfo({
-  cost,
-  endDate,
-  daysLeft,
-}: ProductInfoProps) {
+export default function ProductInfo({ plan }: ProductInfoProps) {
+  const daysLeft = Math.ceil((plan.endDate.getTime() - Date.now()) / (1000 * 3600 * 24));
+  const endDate = plan.endDate.toLocaleDateString("ko-KR").replace(/\. /g, ".");
+
   return (
     <div className={styles.container}>
       <div className={styles.infoItem}>
         <Typo.Subtext>참여 비용</Typo.Subtext>
-        <Typo.Headline>{cost.toLocaleString()}원</Typo.Headline>
+        <Typo.Headline>{plan.discountPrice.toLocaleString()}원</Typo.Headline>
       </div>
       <div className={styles.infoItem}>
         <Typo.Subtext>종료일</Typo.Subtext>

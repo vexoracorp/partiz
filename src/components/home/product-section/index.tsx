@@ -31,7 +31,7 @@ export default function ProductSection() {
       />
       <div className={s.product_container}>
         {filteredProducts.map((product) => (
-          <Product {...product} />
+          <Product key={product.id} {...product} />
         ))}
       </div>
     </div>

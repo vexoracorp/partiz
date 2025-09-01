@@ -6,7 +6,7 @@ import ContentItem from "./content-item";
 
 import s from "./styles.module.scss";
 
-export default function Content() {
+export default function RecommendContent() {
   return (
     <VStack className={s.container}>
       <Typo.Display>파티즈 추천 컨텐츠</Typo.Display>

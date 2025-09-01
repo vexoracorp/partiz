@@ -1,1 +1,1 @@
-export { default as RecommendList } from "./recommend-list";
+export { default as RecommendContent } from "./recommend-list";

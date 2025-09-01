@@ -1,4 +1,4 @@
-import { Category as CategoryEnum, CategoryWithIcon } from "@/types/category";
+import { CategoryWithIcon } from "@/types/category";
 
 import s from "./styles.module.scss";
 

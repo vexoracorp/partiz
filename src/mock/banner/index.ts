@@ -2,7 +2,7 @@ const bannerData = [
   {
     title: "음질 끝판왕 타이달 파티 오픈!\n파티즈에서 월 5천원대",
     description: "음질 끝판왕 타이달 파티 오픈!\n파티즈에서 월 5천원대",
-    imageUrl: "/image/tidal.png",
+    imageUrl: "/image/banner/tidal.png",
     imageAlt: "Banner 1 image",
     href: "/",
     backgroundColor: "#19191C",
@@ -19,7 +19,7 @@ const bannerData = [
   {
     title: "뉴진스 신곡 Spotify로\n지금 바로 듣기!",
     description: "뉴진스의 신곡을 Spotify에서 지금 바로 듣고 즐겨보세요.",
-    imageUrl: "/image/newjean.jpg",
+    imageUrl: "/image/banner/newjean.jpg",
     imageAlt: "Banner 1 image",
     href: "/",
     backgroundColor: "#62678E",

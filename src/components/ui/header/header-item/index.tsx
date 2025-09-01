@@ -19,7 +19,7 @@ interface HeaderItemProps {
  * @param text - Visible label for the navigation item.
  * @param icon - Lucide icon component to render.
  * @param isActive - When true, renders the item in its active (dark) color. Defaults to `false`.
- * @param href_link - Destination path passed to the Link's `to` prop.
+ * @param href - Destination path passed to the Link's `to` prop.
  * @returns A JSX element linking to `href_link` that displays the icon and label.
  */
 export default function HeaderItem({

@@ -1,6 +1,7 @@
+import { ProductSection } from "@/components/home";
+import Banner from "@/components/home/banner";
 import { MainLayout } from "@/components/layouts";
 import { Header } from "@/components/ui";
-import Banner from "@/components/home/banner";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
 
       <MainLayout>
         <Banner />
+        <ProductSection />
         <p>나야 배너</p>
       </MainLayout>
     </>

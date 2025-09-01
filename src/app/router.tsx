@@ -1,9 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Home from "@/pages/Home";
-import Login from "@/pages/Login";
-import MyContent from "@/pages/Mycontent.tsx";
-import Subscription from "@/pages/subscription.tsx";
+import {
+  Content,
+  Home,
+  Login,
+  Product,
+  ProductDetail,
+  Subscription,
+} from "@/pages";
 
 const Router = createBrowserRouter([
   {
@@ -11,8 +15,8 @@ const Router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/my-contents",
-    element: <MyContent />,
+    path: "/contents",
+    element: <Content />,
   },
   {
     path: "/subscription",
@@ -21,6 +25,14 @@ const Router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/product/:id",
+    element: <Product />,
+  },
+  {
+    path: "/product/:id/party/:partyId",
+    element: <ProductDetail />,
   },
 ]);
 

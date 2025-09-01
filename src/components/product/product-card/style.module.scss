@@ -1,0 +1,30 @@
+.container {
+    width: 370px;
+
+    padding: $spacing-20;
+
+    border-radius: $radius-14;
+
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacing-16;
+
+    color: $color-text;
+    background-color: $color-surface-subtle;
+}
+
+.image {
+    width: 45px;
+
+    border-radius: $radius-14;
+
+    aspect-ratio: 1/1;
+}
+
+.endDate {
+    color: $color-text-subtle;
+}
+
+.icon {
+    color: $color-text-subtle;
+}

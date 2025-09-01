@@ -1,0 +1,88 @@
+@import '../../../styles/variables.scss';
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-10;
+  transition: transform 0.2s ease-in-out;
+
+  background-color: $color-surface-brand;
+
+  &--sm {
+    width: 32px;
+    height: 32px;
+  }
+
+  &--md {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--lg {
+    width: 70px;
+    height: 70px;
+
+    border-radius: $spacing-20;
+
+    .avatarCircle {
+        width: 22px;
+        height: 30px;
+
+        border-width: 2.5px;
+    }
+
+    .avatarPupil {
+        width: 14px;
+        height: 14px;
+
+        top: 5px;
+        left: 8px;
+    }
+  }
+
+  &[data-disabled="true"] {
+    background-color: $color-surface-subtle;
+
+    .avatarCircle {
+        border-color: $color-text-subtle;
+    }
+
+    .avatarPupil {
+        background-color: $color-text-subtle;
+    }
+  }
+}
+
+.avatarInner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.avatarCircle {
+  position: relative;
+  width: 12px;
+  height: 16px;
+  border: 1.5px solid #000000;
+  border-radius: 100px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatarPupil {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000000;
+  position: absolute;
+  top: 2.5px;
+  left: 4px;
+}

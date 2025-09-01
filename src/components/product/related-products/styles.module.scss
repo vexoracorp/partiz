@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-20;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-12;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.productImage {
+  width: 260px;
+  aspect-ratio: 16/9;
+  border-radius: $radius-12;
+  overflow: hidden;
+
+  object-fit: cover;
+}

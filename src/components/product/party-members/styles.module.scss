@@ -1,0 +1,90 @@
+@import "@/styles/variables.scss";
+
+.container {
+    gap: $spacing-16;
+
+    .title {
+        color: $color-text-subtle;
+    }
+}
+
+.list {
+  display: flex;
+  gap: $spacing-24;
+  align-items: flex-start;
+}
+
+.memberItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-10;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: $radius-20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &.active {
+    background-color: $color-surface-brand;
+  }
+  
+  &.inactive {
+    background-color: $color-surface-subtle;
+  }
+}
+
+.avatarContent {
+  display: flex;
+  align-items: center;
+  gap: $spacing-12;
+}
+
+.avatarDot {
+  width: 16px;
+  height: 24px;
+  border: 2.5px solid;
+  border-radius: $radius-full;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .active & {
+    border-color: $color-text;
+    
+    &::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background-color: $color-text;
+      border-radius: 50%;
+    }
+  }
+  
+  .inactive & {
+    border-color: $color-text-subtle;
+    
+    &::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background-color: $color-text-subtle;
+      border-radius: 50%;
+    }
+  }
+}
+
+.memberInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-4;
+
+    .memberInfoCaption {
+    color: $color-text-subtle;
+    }
+}

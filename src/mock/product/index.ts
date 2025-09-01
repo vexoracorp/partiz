@@ -107,7 +107,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_ai_002",
     name: "Claude Pro",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/claude.png",
     bannerImage: "/image/chatgpt.jpg",
     category: [Category.AI],
     gallery: ["/image/product/chatgpt.png"],
@@ -120,7 +120,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_ai_004",
     name: "Perplexity Pro",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/perplexity.png",
     bannerImage: "/image/chatgpt.jpg",
     category: [Category.AI],
     gallery: ["/image/product/chatgpt.png"],
@@ -133,7 +133,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_ai_005",
     name: "Google One",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/google_one.jpg",
     bannerImage: "/image/chatgpt.jpg",
     category: [Category.AI],
     gallery: ["/image/product/chatgpt.png"],
@@ -148,7 +148,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_music_001",
     name: "Spotify Premium",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/spotify.svg",
     bannerImage: "/image/banner/spotify.jpg",
     category: [Category.MUSIC],
     gallery: ["/image/product/chatgpt.png"],
@@ -161,7 +161,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_music_003",
     name: "Tidal",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/tidal.png",
     bannerImage: "/image/banner/tidal.png",
     category: [Category.MUSIC],
     gallery: ["/image/product/chatgpt.png"],
@@ -174,7 +174,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_music_004",
     name: "YouTube Music",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/youtube_music.png",
     bannerImage: "/image/banner/spotify.jpg",
     category: [Category.MUSIC],
     gallery: ["/image/product/chatgpt.png"],
@@ -189,7 +189,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_stream_001",
     name: "Netflix",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/netflix.png",
     bannerImage: "/image/theboys.png",
     category: [Category.STREAMING],
     gallery: ["/image/product/chatgpt.png"],
@@ -202,7 +202,7 @@ export const MockProducts: Product[] = [
   {
     id: "tving_stream_002",
     name: "TVING",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/tving.png",
     bannerImage: "/image/theboys.png",
     category: [Category.STREAMING],
     gallery: ["/image/product/chatgpt.png"],
@@ -215,7 +215,7 @@ export const MockProducts: Product[] = [
   {
     id: "disney_stream_002",
     name: "Disney+",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/disney.jpeg",
     bannerImage: "/image/theboys.png",
     category: [Category.STREAMING],
     gallery: ["/image/product/chatgpt.png"],
@@ -228,7 +228,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_stream_003",
     name: "YouTube Premium",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/youtube.png",
     bannerImage: "/image/theboys.png",
     category: [Category.STREAMING],
     gallery: ["/image/product/chatgpt.png"],
@@ -241,7 +241,7 @@ export const MockProducts: Product[] = [
   {
     id: "p_stream_004",
     name: "Amazon Prime Video",
-    image: "/image/product/chatgpt.png",
+    image: "/image/product/amazon.png",
     bannerImage: "/image/theboys.png",
     category: [Category.STREAMING],
     gallery: ["/image/product/chatgpt.png"],

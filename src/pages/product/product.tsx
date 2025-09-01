@@ -37,7 +37,7 @@ export default function Product() {
           title={product.name}
           partyCount={MockParty.length.toString()}
           tag={product.category}
-          image={product.bannerImage}
+          image={product.image}
         />
 
         <VStack fullWidth gap={24}>

@@ -4,7 +4,6 @@ import Category from "@/components/home/product-section/category";
 import Product from "@/components/home/product-section/product";
 import { MockProducts } from "@/mock/product";
 import { filteredCategories } from "@/utils/category";
-import { getMinPlanPrice } from "@/utils/product";
 
 import s from "./styles.module.scss";
 

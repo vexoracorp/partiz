@@ -21,7 +21,9 @@ export default function ProductHeader({
       <VStack className={s.content}>
         <Typo.Headline as="h1">{title}</Typo.Headline>
         <Typo.Body as="p">
-          파티 {partyCount}개 · {tag.map((t) => `#${t}`).join(", ")}
+          {partyCount && `파티 ${partyCount}개`}
+          {partyCount && tag.length > 0 && " · "}
+          {tag.map((t) => `#${t}`).join(", ")}
         </Typo.Body>
         <Typo.Body as="p"></Typo.Body>
       </VStack>

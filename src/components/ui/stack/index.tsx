@@ -1,22 +1,23 @@
-import React from 'react';
-import styles from './styles.module.scss';
+import React from "react";
+
+import styles from "./styles.module.scss";
 
 // 정렬 방향 enum
 export enum FlexAlign {
-  Start = 'start',
-  Center = 'center',
-  End = 'end',
-  Stretch = 'stretch',
+  Start = "start",
+  Center = "center",
+  End = "end",
+  Stretch = "stretch",
 }
 
 // justify enum
 export enum FlexJustify {
-  Start = 'start',
-  Center = 'center',
-  End = 'end',
-  Between = 'between',
-  Around = 'around',
-  Evenly = 'evenly',
+  Start = "start",
+  Center = "center",
+  End = "end",
+  Between = "between",
+  Around = "around",
+  Evenly = "evenly",
 }
 
 // 공통 Stack props
@@ -25,6 +26,9 @@ interface StackProps {
   align?: FlexAlign;
   justify?: FlexJustify;
   gap?: number;
+  fullWidth?: boolean;
+  fullHeight?: boolean;
+  wrap?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -35,25 +39,36 @@ export const HStack: React.FC<StackProps> = ({
   align = FlexAlign.Start,
   justify = FlexJustify.Start,
   gap = 0,
+  fullWidth = false,
+  fullHeight = false,
+  wrap = false,
   className,
   style,
   ...props
 }) => {
   const alignClass = styles[`align-${align}`];
   const justifyClass = styles[`justify-${justify}`];
-  const gapClass = gap > 0 ? styles[`gap-${gap}`] : '';
-  
+  const gapClass = gap > 0 ? styles[`gap-${gap}`] : "";
+  const widthClass = fullWidth ? styles.fullWidth : "";
+  const heightClass = fullHeight ? styles.fullHeight : "";
+  const wrapClass = wrap ? styles.wrap : "";
+
   const combinedClassName = [
     styles.hstack,
     alignClass,
     justifyClass,
     gapClass,
-    className
-  ].filter(Boolean).join(' ');
+    widthClass,
+    heightClass,
+    wrapClass,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div 
-      className={combinedClassName} 
+    <div
+      className={combinedClassName}
       style={{ ...style, gap: gap > 0 ? `${gap}px` : undefined }}
       {...props}
     >
@@ -68,25 +83,36 @@ export const VStack: React.FC<StackProps> = ({
   align = FlexAlign.Start,
   justify = FlexJustify.Start,
   gap = 0,
+  fullWidth = false,
+  fullHeight = false,
+  wrap = false,
   className,
   style,
   ...props
 }) => {
   const alignClass = styles[`align-${align}`];
   const justifyClass = styles[`justify-${justify}`];
-  const gapClass = gap > 0 ? styles[`gap-${gap}`] : '';
-  
+  const gapClass = gap > 0 ? styles[`gap-${gap}`] : "";
+  const widthClass = fullWidth ? styles.fullWidth : "";
+  const heightClass = fullHeight ? styles.fullHeight : "";
+  const wrapClass = wrap ? styles.wrap : "";
+
   const combinedClassName = [
     styles.vstack,
     alignClass,
     justifyClass,
     gapClass,
-    className
-  ].filter(Boolean).join(' ');
+    widthClass,
+    heightClass,
+    wrapClass,
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div 
-      className={combinedClassName} 
+    <div
+      className={combinedClassName}
       style={{ ...style, gap: gap > 0 ? `${gap}px` : undefined }}
       {...props}
     >

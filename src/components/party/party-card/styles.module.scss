@@ -1,11 +1,5 @@
-@import '../../../styles/variables.scss';
-
-.party {
-  width: 100%;
-  max-width: 370px;
-}
-
 .partyCard {
+  width: 368px;
   display: flex;
   flex-direction: column;
   gap: $spacing-20;
@@ -13,7 +7,7 @@
   border: 1px solid $color-border;
   border-radius: 20px;
   background: $color-surface;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.07);
+  box-shadow: $shadow;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }

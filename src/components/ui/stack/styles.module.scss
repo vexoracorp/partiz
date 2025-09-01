@@ -12,6 +12,20 @@
   flex-direction: column;
 }
 
+// Full width/height 클래스들
+.fullWidth {
+  width: 100%;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+// Wrap 클래스
+.wrap {
+  flex-wrap: wrap;
+}
+
 // Align 클래스들
 .align-start {
   align-items: flex-start;

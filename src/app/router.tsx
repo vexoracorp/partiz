@@ -1,5 +1,6 @@
-import { Content, Home, Login, Subscription } from "@/pages";
 import { createBrowserRouter } from "react-router-dom";
+
+import { Content, Home, Login, Subscription } from "@/pages";
 
 const Router = createBrowserRouter([
   {

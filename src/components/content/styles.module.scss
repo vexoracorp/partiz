@@ -1,0 +1,8 @@
+.SectionContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    width: min(100%, $max-width);
+    margin: 0 auto;
+    overflow-x: auto;
+}

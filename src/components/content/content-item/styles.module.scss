@@ -1,61 +1,33 @@
-.content-item {
+.info {
+    padding: 0vh;
     display: flex;
     flex-direction: column;
-    text-decoration: none;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    background-color: #fff;
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    > img {
-        display: block;
-        width: 100%;
-        height: 200px; // 고정 높이 설정
-        object-fit: cover; // 비율을 유지하면서 채우고, 초과 부분은 잘라냄
-    }
-
-    .info {
-        padding: 12px;
-    }
-
-    h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 0 0 4px;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-
-    p {
-        display: flex;
-        align-items: center;
-        font-size: 0.875rem;
-        margin: 0;
-        gap: 4px;
-
-        > img {
-            width: 16px;
-            height: 16px;
-        }
-    }
 }
 
-@media (max-width: 768px) {
-    .content-item {
-        h3 {
-            font-size: 0.9rem; 
-        }
-        p {
-            font-size: 0.8rem;
-        }
-    }
+.image {
+    display: block;
+    aspect-ratio: 9 / 13;
+    object-fit: cover;
+    width: 15vw;
+    border-radius: 10px;
+}
+
+.title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #151515;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-top: -1vh;
+    color: #7D7D7D;
+}
+
+.ratingIcon {
+    margin-right: 4px;
 }

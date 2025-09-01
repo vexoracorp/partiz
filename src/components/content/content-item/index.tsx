@@ -1,4 +1,4 @@
-import "@/components/content/content-item/styles.module.scss";
+import styles from "@/components/content/content-item/styles.module.scss";
 
 export interface ContentItemProps {
   title: string;
@@ -13,16 +13,16 @@ export default function ContentItem({
   rating,
   href,
 }: ContentItemProps) {
-  const titleColor = "#151515";
-  const ratingColor = "#7d7d7d";
-
   return (
-    <a href={href} className="content-item">
-      <img src={imageUrl} alt={title} />
-      <h3 style={{ color: titleColor, fontWeight: "default" }}>{title}</h3>
-      <p style={{ color: ratingColor }}>
-        <img src="/star.svg" alt="Rating" /> {rating}
-      </p>
+    <a href={href} className={styles.contentItem}>
+      <img src={imageUrl} className={styles.image} alt={title} />
+      <div className={styles.info}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.rating}>
+          <img src="/star.svg" className={styles.ratingIcon} alt="Rating" />{" "}
+          {rating}
+        </p>
+      </div>
     </a>
   );
 }

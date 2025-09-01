@@ -1,7 +1,7 @@
 const contentData = [
   {
     title: "F1 더 무비",
-    imageUrl: "/image/f1.webp",
+    imageUrl: "/image/f1.jpg",
     rating: "9.6",
   },
   {

@@ -52,7 +52,7 @@ export default function Home() {
             />
           </HStack>
         </VStack>
-        <Spacing size={50} />
+        <Spacing size={25} />
         <ProductSection />
         <Content />
       </MainLayout>

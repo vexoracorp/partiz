@@ -45,7 +45,7 @@ export default function ProductDetail() {
         <ProductHeader
           title={product.name}
           tag={product.category.map((cat) => cat.toString())}
-          image={product.bannerImage}
+          image={product.image}
           rightContent={
             <Button variant="primary" size="large">
               파티 참가하기

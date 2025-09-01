@@ -7,10 +7,19 @@ body, html {
 
 * {
     box-sizing: border-box;
-
     font-family: "Pretendard", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p {
     margin: 0;
+}
+
+// 스크롤바 숨기기
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }

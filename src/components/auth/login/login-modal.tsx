@@ -1,10 +1,28 @@
 import { Button, Input, Spacing, Typo } from "@/components/ui";
 import s from "./styles.module.scss";
-import {  } from "lucide-react";
+import { useState } from "react";
+
 export default function LoginModal() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = () => {
+        if (!email.trim()) {
+            alert("아이디 또는 이메일을 입력해주세요.");
+            return;
+        }
+        
+        if (!password.trim()) {
+            alert("비밀번호를 입력해주세요.");
+            return;
+        }
+        
+        // 로그인 로직
+        console.log("로그인 진행", { email, password });
+    };
+
     return (
         <>
-        
         <div className={s.container}>
             <img
               src="/partiz.svg"
@@ -18,15 +36,20 @@ export default function LoginModal() {
                 placeholder="아이디 또는 이메일"
                 size="large"
                 fullWidth
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
             />
             <Spacing size={12} />
             <Input
+                type="password"
                 placeholder="비밀번호를 입력해주세요."
                 size="large"
                 fullWidth
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
             />
             <Spacing size={12} />
-            <Button size="large" variant="primary" fullWidth onClick={() => (console.log("login"))}>
+            <Button size="large" variant="primary" fullWidth onClick={handleLogin}>
                 로그인
             </Button>
             </div>
@@ -55,7 +78,6 @@ export default function LoginModal() {
                 <a href="/auth/signup" className={s.signup_text}>회원가입</a>
             </div>
         </div>
-        
         </>
     )
 }

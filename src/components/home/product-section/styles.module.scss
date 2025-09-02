@@ -9,7 +9,6 @@
 
 .title_container {
   width: 100%;
-  min-height: 115px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,11 +20,24 @@
     color: $color-text-subtle;
     text-align: center;
   }
+
+  // Service 페이지용 오른쪽 정렬
+  &.service_layout {
+    align-items: start;
+  }
+}
+
+.service_description {
+  text-align: right !important;
+}
+
+.service_category {
+  align-self: start;
+  width: auto;
 }
 
 .product_container{
   display: flex;
-  justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
   gap: 24px;

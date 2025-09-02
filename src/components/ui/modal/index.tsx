@@ -77,14 +77,8 @@ export default function Modal(props: PropsWithChildren<ModalProps>) {
     };
 
     const handleClick = (e: MouseEvent) => {
-      const rect = dialog.getBoundingClientRect();
-      const isInDialog =
-        rect.top <= e.clientY &&
-        e.clientY <= rect.top + rect.height &&
-        rect.left <= e.clientX &&
-        e.clientX <= rect.left + rect.width;
-
-      if (!isInDialog) {
+      // dialog 자체를 클릭했을 때만 닫기 (content 영역이 아닌 경우)
+      if (e.target === dialog) {
         close();
       }
     };
@@ -106,7 +100,7 @@ export default function Modal(props: PropsWithChildren<ModalProps>) {
       className={`${s.dialog} ${s[size]} ${visible ? s.open : s.closed} ${className || ""}`}
       data-open={visible}
     >
-      <div className={s.content}>
+      <div className={s.content} onClick={(e) => e.stopPropagation()}>
         <div className={s.headerContainer}>
           <div className={s.header}>
             {title ? (

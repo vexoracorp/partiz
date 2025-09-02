@@ -1,4 +1,4 @@
-import { Home, LayoutGrid, ListVideo } from "lucide-react";
+import { Home, LayoutGrid, ListVideo, ShoppingCart } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 //조성주 바보야 좀 성공하자
 import { Button } from "@/components/ui";
@@ -33,6 +33,12 @@ export default function Header() {
               icon={Home}
               href={"/"}
               isActive={pathname === "/"}
+            />
+            <HeaderItem
+              text={"서비스"}
+              icon={ShoppingCart}
+              href={"/product-list"}
+              isActive={pathname.startsWith("/product-list")}
             />
             <HeaderItem
               text={"컨텐츠"}

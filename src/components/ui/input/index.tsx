@@ -44,7 +44,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       .join(" ");
 
     return (
-      <div className={s.container}>
+      <div className={`${s.container} ${fullWidth ? s.fullWidth : ''}`}>
         {label && <label className={s.label}>{label}</label>}
         <div className={inputWrapperClassName}>
           {leftIcon && <div className={s.leftIcon}>{leftIcon}</div>}

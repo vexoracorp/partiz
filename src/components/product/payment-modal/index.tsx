@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import { useState } from "react";
+import { PartyPopper } from "lucide-react";
 import {
   Button,
   FlexAlign,
@@ -19,7 +19,11 @@ interface PaymentModalProps {
   onClose?: () => void;
 }
 
-export default function PaymentModal({ product, plan, onClose }: PaymentModalProps) {
+export default function PaymentModal({
+  product,
+  plan,
+  onClose,
+}: PaymentModalProps) {
   const [pointsToUse, setPointsToUse] = useState(0);
 
   // 계산 관련 상수들
@@ -40,7 +44,7 @@ export default function PaymentModal({ product, plan, onClose }: PaymentModalPro
   };
 
   return (
-    <VStack gap={24}>
+    <VStack gap={24} >
       {/* 제품 헤더 */}
       <HStack gap={20} align={FlexAlign.Center}>
         <img
@@ -52,22 +56,20 @@ export default function PaymentModal({ product, plan, onClose }: PaymentModalPro
           <Typo.BodyLarge className={styles.productName}>
             {product.name}
           </Typo.BodyLarge>
-          <Typo.Body className={styles.productSubtitle}>
-            {plan.name}
-          </Typo.Body>
+          <Typo.Body className={styles.productSubtitle}>{plan.name}</Typo.Body>
         </VStack>
       </HStack>
 
       {/* 절약 금액 배너 */}
       <div className={styles.savingsBanner}>
-        <span className={styles.partyIcon}>🎉</span>
+        <PartyPopper className={styles.partyIcon} />
         <Typo.Body className={styles.savingsText}>
           파티즈로 {Math.round(savingsAmount).toLocaleString()}원 아꼈어요
         </Typo.Body>
       </div>
 
       {/* 포인트 사용 섹션 */}
-      <VStack gap={10}>
+      <VStack gap={10} fullWidth>
         <HStack justify={FlexJustify.Between} fullWidth>
           <Typo.Body className={styles.sectionTitle}>포인트 사용</Typo.Body>
           <HStack gap={6}>
@@ -85,18 +87,12 @@ export default function PaymentModal({ product, plan, onClose }: PaymentModalPro
             onChange={(e) => {
               const value = e.target.value.replace(/[^0-9]/g, "");
               const numValue = parseInt(value) || 0;
-              setPointsToUse(
-                Math.min(numValue, userPoints, plan?.price || 0),
-              );
+              setPointsToUse(Math.min(numValue, userPoints, plan?.price || 0));
             }}
-            size="medium"
-            style={{ flex: 1 }}
+            size="large"
+            fullWidth
           />
-          <Button
-            variant="primary"
-            size="medium"
-            onClick={handleUseAllPoints}
-          >
+          <Button variant="primary" size="large" onClick={handleUseAllPoints}>
             전액 사용
           </Button>
         </HStack>
@@ -106,7 +102,7 @@ export default function PaymentModal({ product, plan, onClose }: PaymentModalPro
       <div className={styles.divider} />
 
       {/* 계산 요약 */}
-      <VStack gap={20}>
+      <VStack gap={20} fullWidth>
         <HStack justify={FlexJustify.Between} fullWidth>
           <Typo.BodyLarge className={styles.summaryLabel}>
             참여일수
@@ -116,12 +112,12 @@ export default function PaymentModal({ product, plan, onClose }: PaymentModalPro
           </Typo.BodyLarge>
         </HStack>
 
-        <VStack gap={14}>
+        <VStack gap={14} fullWidth>
           <HStack justify={FlexJustify.Between} fullWidth>
             <Typo.BodyLarge className={styles.summaryLabel}>
               원가
             </Typo.BodyLarge>
-            <Typo.BodyLarge className={styles.summaryValue}>
+            <Typo.BodyLarge className={`${styles.summaryValue} ${styles.originalPrice}`}>
               {originalPrice.toLocaleString()}원
             </Typo.BodyLarge>
           </HStack>
@@ -134,9 +130,7 @@ export default function PaymentModal({ product, plan, onClose }: PaymentModalPro
               <Typo.Display className={styles.finalAmount}>
                 {finalAmount.toLocaleString()}원
               </Typo.Display>
-              <Typo.Caption className={styles.vatNote}>
-                (VAT 포함)
-              </Typo.Caption>
+              <Typo.Caption className={styles.vatNote}>(VAT 포함)</Typo.Caption>
             </VStack>
           </HStack>
         </VStack>

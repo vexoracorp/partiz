@@ -3,7 +3,7 @@ import { ProductSection } from "@/components/home";
 import Banner from "@/components/home/banner";
 import { MainLayout } from "@/components/layouts";
 import { ProductCard } from "@/components/product";
-import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
+import { Header, HStack, Typo, VStack } from "@/components/ui";
 
 export default function Home() {
   return (

@@ -1,0 +1,83 @@
+.productImage {
+  width: 55px;
+  height: 55px;
+  border-radius: $radius-14;
+  object-fit: cover;
+}
+
+.productName {
+  font-weight: 600;
+  color: $color-text;
+}
+
+.productSubtitle {
+  color: $color-text-subtle;
+}
+
+.savingsBanner {
+  background: $color-surface-brand-subtle;
+  border-radius: $radius-14;
+  padding: $spacing-12 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-10;
+  width: 100%;
+}
+
+.partyIcon {
+  width: 18px;
+  height: 18px;
+  color: $color-text-brand;
+}
+
+.savingsText {
+  color: $color-text-brand;
+ font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; 
+}
+
+.sectionTitle {
+  font-weight: 500;
+  color: $color-text;
+}
+
+.pointsLabel {
+  color: $color-text-subtle;
+}
+
+.pointsValue {
+  color: $color-text;
+  font-weight: 500;
+}
+
+.divider {
+  height: 1px;
+  background: $color-border-subtle;
+  width: 100%;
+}
+
+.summaryLabel {
+  color: $color-text-subtle;
+}
+
+.summaryValue {
+  color: $color-text;
+}
+
+.finalAmount {
+  color: $color-text;
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.vatNote {
+  color: $color-text-subtle;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  color: $color-text-subtle;
+}

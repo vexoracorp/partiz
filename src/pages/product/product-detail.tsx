@@ -1,19 +1,22 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { MainLayout } from "@/components/layouts";
 import {
   PartyMembers,
+  PaymentModal,
   ProductDescription,
   ProductHeader,
   ProductInfo,
   RelatedProducts,
 } from "@/components/product";
-import { Button, Header, Spacing } from "@/components/ui";
+import { Button, Header, Modal, Spacing } from "@/components/ui";
 import { MockProducts } from "@/mock/product";
 import type { Product } from "@/types/product";
 
 export default function ProductDetail() {
   const { id, partyId } = useParams<{ id: string; partyId: string }>();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const product = MockProducts.find((p: Product) => p.id === id);
   const plan = partyId
     ? product?.plan.find((p) => p.id === partyId) || product?.plan[0]
@@ -47,7 +50,11 @@ export default function ProductDetail() {
           tag={product.category.map((cat) => cat.toString())}
           image={product.image}
           rightContent={
-            <Button variant="primary" size="large">
+            <Button
+              variant="primary"
+              size="large"
+              onClick={() => setIsDialogOpen(true)}
+            >
               파티 참가하기
             </Button>
           }
@@ -58,6 +65,19 @@ export default function ProductDetail() {
         <Spacing size={25} />
         <RelatedProducts product={product} name={product.name} />
       </MainLayout>
+
+      <Modal
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        title="구독하기"
+        size="md"
+      >
+        <PaymentModal
+          product={product}
+          plan={plan}
+          onClose={() => setIsDialogOpen(false)}
+        />
+      </Modal>
     </>
   );
 }

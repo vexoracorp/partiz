@@ -8,6 +8,7 @@ import {
   ProductDetail,
   Subscription,
 } from "@/pages";
+import Signup from "@/pages/auth/signup";
 
 const Router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ const Router = createBrowserRouter([
   {
     path: "/product/:id/party/:partyId",
     element: <ProductDetail />,
+  },
+  {
+    path: "auth/login",
+    element:<Login />,
+  },
+  {
+    path: "/auth/signup",
+    element: <Signup />,
   },
 ]);
 

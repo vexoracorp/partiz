@@ -1,16 +1,15 @@
-import LoginModal from "@/components/auth/login/login-modal";
+import SignupModal from "@/components/auth/signup/signup-modal";
 import AuthLayout from "@/components/layouts/auth";
 import { Header } from "@/components/ui";
 
-export default function Login() {
+export default function Signup() {
   return (
     <>
       <Header />
       <AuthLayout>
-        
-            <LoginModal />
-
+        <SignupModal />
       </AuthLayout>
     </>
   );
-};
+}
+

@@ -9,6 +9,7 @@ import {
   Subscription,
 } from "@/pages";
 import Signup from "@/pages/auth/signup";
+import ProductList from "@/pages/ProductList";
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const Router = createBrowserRouter([
   {
     path: "/subscription",
     element: <Subscription />,
+  },
+  {
+    path: "/product-list",
+    element: <ProductList />,
   },
   {
     path: "/login",

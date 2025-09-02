@@ -11,6 +11,7 @@ export interface InputProps
   fullWidth?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  required?: boolean;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -25,6 +26,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       fullWidth = false,
       leftIcon,
       rightIcon,
+      required = false,
       ...props
     },
     ref,
@@ -45,10 +47,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={`${s.container} ${fullWidth ? s.fullWidth : ''}`}>
-        {label && <label className={s.label}>{label}</label>}
+        {label && (
+          <label className={s.label}>
+            {label}
+            {required && <span className={s.required}>*</span>}
+          </label>
+        )}
         <div className={inputWrapperClassName}>
           {leftIcon && <div className={s.leftIcon}>{leftIcon}</div>}
-          <input ref={ref} className={s.input} disabled={disabled} {...props} />
+          <input ref={ref} className={s.input} disabled={disabled} required={required} {...props} />
           {rightIcon && <div className={s.rightIcon}>{rightIcon}</div>}
         </div>
         {error && <div className={s.errorMessage}>{error}</div>}

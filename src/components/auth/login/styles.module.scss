@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-24;
+    width: 350px;
+    margin: 0;
+}
+
+.divider {
+  height: 1px;
+  background: $color-border-subtle;
+  width: 100%;
+}
+.input_container{
+    width: 100%;
+}
+.text_container{
+    display: flex;
+    flex-direction: row;
+    gap: $spacing-8;
+}
+
+.text{
+    color: #7D7D7D;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.signup_text{
+    color: #45C1FF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.kakao_button {
+  background-color: #FFEA2B !important;
+  color: #000000 !important;
+  border: none !important;
+}
+
+.kakao_button:hover {
+  background-color: #FFE300 !important;
+}

@@ -1,5 +1,5 @@
 import { Home, LayoutGrid, ListVideo } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/ui";
 import HeaderItem from "@/components/ui/header/header-item";
@@ -12,6 +12,7 @@ import s from "./styles.module.scss";
  */
 export default function Header() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   return (
     <header className={s.header}>
       <div className={s.header_content}>
@@ -46,7 +47,7 @@ export default function Header() {
             />
           </nav>
         </div>
-        <Button size="medium" variant="primary">
+        <Button size="medium" variant="primary" onClick={() => navigate("/auth/login")}>
           로그인
         </Button>
       </div>

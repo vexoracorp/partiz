@@ -7,10 +7,8 @@ export default function Login() {
     <>
       <Header />
       <AuthLayout>
-        
-            <LoginModal />
-
+        <LoginModal />
       </AuthLayout>
     </>
   );
-};
+}

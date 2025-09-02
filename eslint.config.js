@@ -8,7 +8,16 @@ import globals from "globals";
 import * as tseslint from "typescript-eslint";
 
 export default [
-  { ignores: ["node_modules", "dist", "build", ".next", "coverage"] },
+  {
+    ignores: [
+      "node_modules",
+      "dist",
+      "build",
+      ".next",
+      "coverage",
+      "commitlint.config.js",
+    ],
+  },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {

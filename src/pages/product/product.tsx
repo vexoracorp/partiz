@@ -35,6 +35,7 @@ export default function Product() {
   return (
     <>
       <Header />
+
       <Spacing size={25} />
       <MainLayout gap={42}>
         <ProductHeader

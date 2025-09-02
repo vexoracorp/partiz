@@ -26,11 +26,12 @@ export const getDaysDifference = (startDate: Date, endDate: Date): number => {
 };
 
 /**
- * 현재 날짜부터 특정 날짜까지 남은 일수를 계산합니다
+ * 현재 날짜부터 특정 날짜까지 남은 일수를 계산합니다 (음수 방지)
  */
 export const getRemainingDays = (targetDate: Date): number => {
   const today = new Date();
-  return getDaysDifference(today, targetDate);
+  const days = getDaysDifference(today, targetDate);
+  return Math.max(0, days); // 음수가 나오면 0으로 처리
 };
 
 /**

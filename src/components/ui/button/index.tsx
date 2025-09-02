@@ -5,7 +5,7 @@ import s from "./style.module.scss";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   size?: "large" | "medium";
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "tertiary";
   pending?: boolean;
   fullWidth?: boolean;
   leadingIcon?: ReactNode;

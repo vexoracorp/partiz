@@ -67,12 +67,14 @@ const createPlan = (
   price: number,
   discountRate = 10,
   participantCount?: number,
+  isIndividual = false, // 개인 구독 여부
 ) => {
   const discountPrice = Math.round(price * (1 - discountRate / 100));
-  const maxParticipants = 4;
-  // participantCount가 지정되지 않은 경우 0-3 사이의 랜덤한 수
-  const actualParticipantCount =
-    participantCount ?? Math.floor(Math.random() * maxParticipants);
+  const maxParticipants = isIndividual ? 1 : 4;
+  // participantCount가 지정되지 않은 경우 설정
+  const actualParticipantCount = isIndividual 
+    ? 0 // 개인 구독은 현재 참여자 0명
+    : (participantCount ?? Math.floor(Math.random() * maxParticipants));
 
   return {
     id,
@@ -101,7 +103,10 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_ai_001", "Standard", 20000, 10, 2)],
+    plan: [
+      createPlan("pl_ai_001", "Party Plan", 20000, 10, 2),
+      createPlan("pl_ai_001_individual", "Individual Plan", 24000, 0, 0, true)
+    ],
     createdAt: createDate("2024-01-10"),
     updatedAt: createDate("2024-06-10"),
     question: {
@@ -177,7 +182,10 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_music_001", "Standard", 13900, 10, 3)],
+    plan: [
+      createPlan("pl_music_001", "Party Plan", 13900, 10, 3),
+      createPlan("pl_music_001_individual", "Individual Plan", 16900, 0, 0, true)
+    ],
     createdAt: createDate("2024-02-01"),
     updatedAt: createDate("2024-06-20"),
     question: {
@@ -238,7 +246,10 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_stream_001", "Premium", 17000, 10, 4)],
+    plan: [
+      createPlan("pl_stream_001", "Party Plan", 17000, 10, 4),
+      createPlan("pl_stream_001_individual", "Individual Plan", 20900, 0, 0, true)
+    ],
     createdAt: createDate("2024-03-01"),
     updatedAt: createDate("2024-06-28"),
     question: {

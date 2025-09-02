@@ -1,116 +1,43 @@
-.partyCard {
-  width: 368px;
+.container{
+  width: 370px;
+  padding: $spacing-20;
+  gap: $spacing-20;
   display: flex;
   flex-direction: column;
-  gap: $spacing-20;
-  padding: $spacing-20;
-  border: 1px solid $color-border;
-  border-radius: 20px;
-  background: $color-surface;
-  box-shadow: $shadow;
+  align-items: flex-start;
+  border-radius: $radius-20;
 
-  &:hover {
-    background-color: $color-surface-subtle;
-    cursor: pointer;
+  .header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
   }
-}
+  
+  .product_id{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-10;
+  }
+  
+  .member{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-12;
+  }
 
-.partyInfo {
-  display: flex;
+  .subscription{
+    width: 100%;
+    display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: $spacing-16;
-  width: 100%;
-}
-
-.partyInfoLeft {
-  display: flex;
-  align-items: center;
-  gap: $spacing-10;
-}
-
-.logo {
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
-  overflow: hidden;
-  flex-shrink: 0;
-
-  object-fit: cover;
-}
-
-.avatars {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 100%;
-
-  color: $color-text-subtle;
-}
-// 반응형 디자인
-@media (max-width: 768px) {
-  .partyCard {
-    padding: 16px;
-    gap: 16px;
+  align-items: flex-start;
+  align-self: stretch;
   }
 
-  .title {
-    font-size: 16px;
-  }
-
-  .price {
-    font-size: 16px;
-  }
-
-  .avatars {
-    gap: 8px;
-  }
-
-  .footer {
-    gap: 16px;
-  }
-
-  .endDate,
-  .remainingSpots {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
-  .partyCard {
-    padding: 12px;
-    gap: 12px;
-  }
-
-  .partyInfo {
-    gap: 12px;
-  }
-
-  .partyInfoLeft {
-    gap: 8px;
-  }
-
-  .logo {
-    width: 24px;
-    height: 24px;
-  }
-
-  .title {
-    font-size: 15px;
-  }
-
-  .price {
-    font-size: 15px;
-  }
-
-  .avatars {
-    gap: 6px;
-  }
+  
+  
 }

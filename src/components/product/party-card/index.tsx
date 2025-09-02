@@ -1,70 +1,79 @@
-import React from "react";
+import { Button, Typo } from "@/components/ui";
+import { PartyAvatar } from "@/components/product";
+import s from "./styles.module.scss";
 
-import { Typo } from "@/components/ui";
-import type { Plan } from "@/types/product";
-import { getPartyEndDateText } from "@/utils/date";
-
-import PartyAvatar from "../party-avatar";
-
-import styles from "./styles.module.scss";
-
-interface PartyCardProps {
-  party: Plan;
+interface Props {
   productImage: string;
-  onClick?: () => void;
-  className?: string;
+  productName: string;
+  productPrice: string;
+  daysLeft: string;
+  membersLeft: string;
+  currentMembers?: number; // 현재 참여한 멤버 수
+  maxMembers?: number; // 최대 멤버 수
+  isParty: boolean;
 }
 
-const PartyCard: React.FC<PartyCardProps> = ({
-  party,
-  productImage,
-  onClick,
-  className,
-}) => {
-  const { name, price, participants, maxParticipants, endDate } = party;
-
-  const remainingSpots = maxParticipants - participants.length;
-  const isFull = remainingSpots <= 0;
+export default function PartyCard({ 
+  productImage, 
+  productName, 
+  productPrice, 
+  daysLeft, 
+  membersLeft, 
+  currentMembers = 3,
+  maxMembers = 6,
+  isParty = false
+}: Props) {
+  
+  // 파티 아바타들을 렌더링하는 함수
+  const renderPartyAvatars = () => {
+    const avatars = [];
+    
+    // 현재 참여한 멤버들의 아바타
+    for (let i = 0; i < currentMembers; i++) {
+      avatars.push(
+        <PartyAvatar 
+          key={`member-${i}`} 
+          size="sm" 
+        />
+      );
+    }
+    
+    // 빈 자리들 (비활성화된 아바타)
+    for (let i = currentMembers; i < maxMembers; i++) {
+      avatars.push(
+        <PartyAvatar 
+          key={`empty-${i}`} 
+          size="sm" 
+          disabled 
+        />
+      );
+    }
+    
+    return avatars;
+  };
 
   return (
-    <div
-      className={`${styles.partyCard} ${className || ""}`}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-      tabIndex={onClick ? 0 : undefined}
-    >
-      <div className={styles.partyInfo}>
-        <div className={styles.partyInfoLeft}>
-          {productImage && (
-            <img
-              className={styles.logo}
-              src={productImage}
-              alt={`${name} 로고`}
-            />
-          )}
-          <Typo.BodyLarge>{name}</Typo.BodyLarge>
+    <div className={s.container}>
+      <div className={s.header}></div>
+        <div className={s.product_id}>
+          <img src={productImage} alt={productName} width={26} height={26}/>
+          <Typo.BodyLarge>{productName}</Typo.BodyLarge>
+          <Typo.BodyLarge>{productPrice}원</Typo.BodyLarge>
         </div>
-        <Typo.BodyLarge>{price.toLocaleString()}원</Typo.BodyLarge>
-      </div>
-
-      <div className={styles.avatars}>
-        {Array.from({ length: maxParticipants }).map((_, index) => (
-          <PartyAvatar
-            key={index}
-            size="md"
-            disabled={index >= participants.length}
-          />
-        ))}
-      </div>
-
-      <div className={styles.footer}>
-        <Typo.Subtext>{getPartyEndDateText(endDate)}</Typo.Subtext>
-        <Typo.Subtext>
-          {isFull ? "마감" : `${remainingSpots}자리 남음`}
-        </Typo.Subtext>
-      </div>
+        {isParty && (
+          <div className={s.member}>
+          {renderPartyAvatars()}
+        </div>
+        )}
+        <div className={s.subscription}>
+          <Typo.Subtext>{daysLeft}</Typo.Subtext>
+          {isParty ? (
+            <Typo.Subtext>{membersLeft}자리 남음</Typo.Subtext>
+          ) : (
+            <Typo.Subtext>{membersLeft}명 참여중</Typo.Subtext>
+          )}
+        </div>
+        <Button size="large" variant="primary" fullWidth>파티 참여하기</Button>
     </div>
-  );
-};
-
-export default PartyCard;
+  )
+}

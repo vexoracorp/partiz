@@ -6,8 +6,6 @@ export default {
     'subject-max-length': [2, 'always', 100],
     // 제목의 최소 길이를 3자로 설정  
     'subject-min-length': [2, 'always', 3],
-    // 제목은 소문자로 시작
-    'subject-case': [2, 'always', 'lower-case'],
     // 제목 끝에 마침표 금지
     'subject-full-stop': [2, 'never', '.'],
     // 타입은 소문자로

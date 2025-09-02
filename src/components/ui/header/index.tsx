@@ -27,9 +27,6 @@ export default function Header() {
               height="22"
             />
           </Link>
-        </div>
-
-        <div className={s.desktop_only}>
           <nav className={s.items} aria-label="주요 메뉴">
             <HeaderItem
               text={"홈"}
@@ -57,7 +54,6 @@ export default function Header() {
           >
             로그인
           </Button>
-        </div>
       </div>
     </header>
   );

@@ -3,9 +3,12 @@ import {
   type PropsWithChildren,
   type ReactNode,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { createPortal } from "react-dom";
+
+import Typo from "../typo";
 
 import s from "./style.module.scss";
 
@@ -33,7 +36,8 @@ export default function Modal(props: PropsWithChildren<ModalProps>) {
     children,
   } = props;
 
-  const [mounted, setMounted] = useState(open);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
   const close = () => onOpenChange(false);
 
@@ -50,41 +54,83 @@ export default function Modal(props: PropsWithChildren<ModalProps>) {
     }
   }, [open]);
 
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (mounted && open) {
+      if (!dialog.open) {
+        dialog.showModal();
+      }
+    } else if (!open && dialog.open) {
+      dialog.close();
+    }
+  }, [mounted, open]);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const handleCancel = (e: Event) => {
+      e.preventDefault();
+      close();
+    };
+
+    const handleClick = (e: MouseEvent) => {
+      const rect = dialog.getBoundingClientRect();
+      const isInDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+
+      if (!isInDialog) {
+        close();
+      }
+    };
+
+    dialog.addEventListener("cancel", handleCancel);
+    dialog.addEventListener("click", handleClick);
+
+    return () => {
+      dialog.removeEventListener("cancel", handleCancel);
+      dialog.removeEventListener("click", handleClick);
+    };
+  }, [close]);
+
   if (!mounted) return null;
 
   return createPortal(
-    <div
-      className={`${s.overlay} ${visible ? s.open : s.closed}`}
+    <dialog
+      ref={dialogRef}
+      className={`${s.dialog} ${s[size]} ${visible ? s.open : s.closed} ${className || ""}`}
       data-open={visible}
     >
-      <div className={s.center}>
-        <div
-          className={[
-            s.dialog,
-            s[size],
-            visible ? s.open : s.closed,
-            className || "",
-          ].join(" ")}
-        >
-          <div className={s.headerContainer}>
-            <div className={s.header}>
-              {title ? <h2 className={s.title}>{title}</h2> : header}
-            </div>
-            {showCloseButton && (
-              <button
-                type="button"
-                aria-label="Close"
-                className={s.close}
-                onClick={close}
-              >
-                <X className={s.closeIcon} />
-              </button>
+      <div className={s.content}>
+        <div className={s.headerContainer}>
+          <div className={s.header}>
+            {title ? (
+              <Typo.Headline as="h2" className={s.title}>
+                {title}
+              </Typo.Headline>
+            ) : (
+              header
             )}
           </div>
-          <div className={s.body}>{children}</div>
+          {showCloseButton && (
+            <button
+              type="button"
+              aria-label="Close"
+              className={s.close}
+              onClick={close}
+            >
+              <X className={s.closeIcon} />
+            </button>
+          )}
         </div>
+        <div className={s.body}>{children}</div>
       </div>
-    </div>,
+    </dialog>,
     document.body,
   );
 }

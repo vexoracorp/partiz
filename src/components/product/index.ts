@@ -1,6 +1,7 @@
 export { default as PartyAvatar } from "./party-avatar";
 export { default as PartyCard } from "./party-card";
 export { default as PartyMembers } from "./party-members";
+export { default as PaymentModal } from "./payment-modal";
 export { default as ProductCard } from "./product-card";
 export { default as ProductDescription } from "./product-description";
 export { default as ProductHeader } from "./product-header";

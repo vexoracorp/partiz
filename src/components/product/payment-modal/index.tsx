@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { PartyPopper } from "lucide-react";
+import { useState } from "react";
+
 import {
   Button,
   FlexAlign,
@@ -44,7 +45,7 @@ export default function PaymentModal({
   };
 
   return (
-    <VStack gap={24} >
+    <VStack gap={24}>
       {/* 제품 헤더 */}
       <HStack gap={20} align={FlexAlign.Center}>
         <img
@@ -117,7 +118,9 @@ export default function PaymentModal({
             <Typo.BodyLarge className={styles.summaryLabel}>
               원가
             </Typo.BodyLarge>
-            <Typo.BodyLarge className={`${styles.summaryValue} ${styles.originalPrice}`}>
+            <Typo.BodyLarge
+              className={`${styles.summaryValue} ${styles.originalPrice}`}
+            >
               {originalPrice.toLocaleString()}원
             </Typo.BodyLarge>
           </HStack>

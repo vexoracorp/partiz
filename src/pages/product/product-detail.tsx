@@ -32,7 +32,7 @@ export default function ProductDetail() {
             <h2>제품을 찾을 수 없습니다</h2>
             <p>요청하신 제품이 존재하지 않거나 삭제되었습니다.</p>
             <Button variant="primary" onClick={() => window.history.back()}>
-              이전 페이지로 돌아가기
+              눌러서 이전 페이지로 돌아가기
             </Button>
           </div>
         </MainLayout>

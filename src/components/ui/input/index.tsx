@@ -46,7 +46,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       .join(" ");
 
     return (
-      <div className={`${s.container} ${fullWidth ? s.fullWidth : ''}`}>
+      <div className={`${s.container} ${fullWidth ? s.fullWidth : ""}`}>
         {label && (
           <label className={s.label}>
             {label}
@@ -55,7 +55,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
         <div className={inputWrapperClassName}>
           {leftIcon && <div className={s.leftIcon}>{leftIcon}</div>}
-          <input ref={ref} className={s.input} disabled={disabled} required={required} {...props} />
+          <input
+            ref={ref}
+            className={s.input}
+            disabled={disabled}
+            required={required}
+            {...props}
+          />
           {rightIcon && <div className={s.rightIcon}>{rightIcon}</div>}
         </div>
         {error && <div className={s.errorMessage}>{error}</div>}

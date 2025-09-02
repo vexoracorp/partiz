@@ -50,7 +50,11 @@ export default function Header() {
               isActive={pathname.startsWith("/subscription")}
             />
           </nav>
-          <Button size="medium" variant="primary" onClick={() => navigate("/auth/login")}>
+          <Button
+            size="medium"
+            variant="primary"
+            onClick={() => navigate("/auth/login")}
+          >
             로그인
           </Button>
         </div>

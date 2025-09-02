@@ -8,7 +8,9 @@ interface ProductInfoProps {
 }
 
 export default function ProductInfo({ plan }: ProductInfoProps) {
-  const daysLeft = Math.ceil((plan.endDate.getTime() - Date.now()) / (1000 * 3600 * 24));
+  const daysLeft = Math.ceil(
+    (plan.endDate.getTime() - Date.now()) / (1000 * 3600 * 24),
+  );
   const endDate = plan.endDate.toLocaleDateString("ko-KR").replace(/\. /g, ".");
 
   return (

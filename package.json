@@ -11,9 +11,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
   "dependencies": {
     "i18next": "^25.4.2",

@@ -1,5 +1,6 @@
 import { Home, LayoutGrid, ListVideo, ShoppingCart } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+
 //조성주 바보야 좀 성공하자
 import { Button } from "@/components/ui";
 import HeaderItem from "@/components/ui/header/header-item";
@@ -53,10 +54,14 @@ export default function Header() {
               isActive={pathname.startsWith("/subscription")}
             />
           </nav>
-        </div>          
-          <Button size="medium" variant="primary" onClick={() => navigate("/auth/login")}>
-            로그인
-          </Button>
+        </div>
+        <Button
+          size="medium"
+          variant="primary"
+          onClick={() => navigate("/auth/login")}
+        >
+          로그인
+        </Button>
       </div>
     </header>
   );

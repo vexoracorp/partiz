@@ -1,0 +1,27 @@
+.agreement {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 150%;
+    gap: 16px;
+    margin: 0 auto;
+    text-align: center;
+
+    .terms {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 20px;
+        border-top: 1px solid #eee;
+        padding-top: 24px;
+    }
+}
+
+.termsLink {
+    text-decoration: underline;
+    color: inherit;
+
+    &:hover {
+        color: #007bff;
+    }
+}

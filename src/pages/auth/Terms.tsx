@@ -1,13 +1,13 @@
-import SignupModal from "@/components/auth/signup/signup-modal";
+import TermsModal from "@/components/auth/terms/TermsModal";
 import AuthLayout from "@/components/layouts/auth";
 import { Header } from "@/components/ui";
 
-export default function Signup() {
+export default function Terms() {
   return (
     <>
       <Header />
       <AuthLayout>
-        <SignupModal />
+        <TermsModal />
       </AuthLayout>
     </>
   );

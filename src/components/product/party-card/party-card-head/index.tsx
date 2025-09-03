@@ -24,13 +24,13 @@ export default function PartyCardHead({
     <div className={s.container}>
         <div className={s.product_id}>
           <img src={productImage} alt={productName} width={26} height={26}/>
-          <Typo.BodyLarge>{productName}</Typo.BodyLarge>
+          <Typo.BodyLarge className={s.product_name}>{productName}</Typo.BodyLarge>
           </div>
           <div className={s.product_info}>
           {isSubscribed ? (
-            <Typo.BodyLarge>{remainingDays}일 남음</Typo.BodyLarge>
+            <Typo.BodyLarge className={s.product_info_text}>{remainingDays}일 남음</Typo.BodyLarge>
           ) : (
-            <Typo.BodyLarge>{Number(productPrice).toLocaleString()}원</Typo.BodyLarge>
+            <Typo.BodyLarge className={s.product_info_text}>{Number(productPrice).toLocaleString()}원</Typo.BodyLarge>
           )}
         </div>
     </div>

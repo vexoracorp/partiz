@@ -1,23 +1,24 @@
 import { Typo } from "@/components/ui";
-import { getPartyEndDateText, formatKoreanDate } from "@/utils/date";
+import { formatKoreanDate, getPartyEndDateText } from "@/utils/date";
+
 import s from "./styles.module.scss";
 
 interface Props {
   endDate: Date;
-  membersLeft: string;
+  membersLeft: number;
   isParty: boolean;
   isSubscribed: boolean;
 }
 
-export default function PartyCardInfo({ 
+export default function PartyCardInfo({
   endDate,
-  membersLeft, 
-  isParty, 
-  isSubscribed 
+  membersLeft,
+  isParty,
+  isSubscribed,
 }: Props) {
-  const dateText = isSubscribed 
-    ? `${formatKoreanDate(endDate)}까지`  // 구독중: 2025.9.31까지
-    : getPartyEndDateText(endDate);       // 비구독: 2025.9.31까지(30일)
+  const dateText = isSubscribed
+    ? `${formatKoreanDate(endDate)}까지` // 구독중: 2025.9.31까지
+    : getPartyEndDateText(endDate); // 비구독: 2025.9.31까지(30일)
 
   return (
     <div className={s.subscription}>

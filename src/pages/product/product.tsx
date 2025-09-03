@@ -48,27 +48,14 @@ export default function Product() {
         <VStack fullWidth gap={24}>
           <Typo.Headline as="h2">{product.name} 파티</Typo.Headline>
           <HStack gap={24} wrap>
-                        {product.plan.map((plan) => {
-              const isPartyPlan = plan.maxParticipants > 1;
+            {product.plan.map((plan) => {
               return (
                 <PartyCard
                   key={plan.id}
-                  productImage={product.image}
-                  productName={product.name}
-                  productPrice={plan.price.toString()}
-                  endDate={plan.endDate}
-                  membersLeft={(plan.maxParticipants - plan.participants.length).toString()}
-                  currentMembers={plan.participants.length}
-                  maxMembers={plan.maxParticipants}
-                  isParty={isPartyPlan}
-                  isSubscribed={false}
-                  onClick={() => {
-                    if (isPartyPlan) {
-                      navigate(`/product/${id}/party/${plan.id}`);
-                    } else {
-                      navigate(`/product/${id}`);
-                    }
-                  }}
+                  context="shopping"
+                  product={product}
+                  plan={plan}
+                  onClick={() => navigate(`/product/${id}/party/${plan.id}`)}
                 />
               );
             })}

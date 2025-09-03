@@ -1,60 +1,46 @@
+import { type PartyCardProps } from "./party-card.type";
+import {
+  checkSubscribed,
+  getCardVariant,
+  getEndDate,
+  getMemberInfo,
+  getProductInfo,
+} from "./party-card.util";
+import {
+  PartyCardButton,
+  PartyCardHead,
+  PartyCardInfo,
+  PartyCardMember,
+} from "./widgets";
+
 import s from "./styles.module.scss";
-import PartyCardHead from "./party-card-head";
-import PartyCardInfo from "./party-card-info";
-import PartyCardButton from "./party-card-button";
-import PartyCardMember from "./party-card-member";
 
-interface Props {
-  productImage: string;
-  productName: string;
-  productPrice: string;
-  endDate: Date;
-  membersLeft: string;
-  currentMembers?: number;
-  maxMembers?: number;
-  isParty: boolean;
-  isSubscribed?: boolean;
-  onClick?: () => void;
-}
-
-export default function PartyCard({ 
-  productImage, 
-  productName, 
-  productPrice, 
-  endDate,
-  membersLeft, 
-  currentMembers = 3,
-  maxMembers = 6,
-  isParty = false,
-  isSubscribed = false,
-  onClick
-}: Props) {
+export default function PartyCard(props: PartyCardProps) {
+  const product = getProductInfo(props);
+  const member = getMemberInfo(props);
+  const endDate = getEndDate(props);
+  const isSubscribed = checkSubscribed(props);
+  const isParty = getCardVariant(props) === "party";
 
   return (
     <div className={s.container}>
-      <PartyCardHead 
-        productImage={productImage}
-        productName={productName}
-        productPrice={productPrice}
+      <PartyCardHead
+        {...product}
         endDate={endDate}
         isSubscribed={isSubscribed}
       />
-      <PartyCardMember
-        currentMembers={currentMembers}
-        maxMembers={maxMembers}
-        isParty={isParty}
-      />
-      <PartyCardInfo 
+      <PartyCardMember {...member} />
+      <PartyCardInfo
         endDate={endDate}
-        membersLeft={membersLeft}
+        membersLeft={member.left}
         isParty={isParty}
         isSubscribed={isSubscribed}
       />
-      <PartyCardButton 
+      <PartyCardButton
         isParty={isParty}
         isSubscribed={isSubscribed}
-        onClick={onClick}
+        onClick={props.onClick}
       />
     </div>
-  )
+  );
 }

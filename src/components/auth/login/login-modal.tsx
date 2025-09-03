@@ -1,9 +1,11 @@
-import { Button, Spacing } from "@/components/ui";
-
+import { Button, Spacing, Typo } from "@/components/ui";
+import { Link } from "react-router-dom";
+import { ChevronRight } from "lucide-react";
 import s from "./styles.module.scss";
+import { useState } from "react";
 
 export default function LoginModal() {
-
+ const [isKorea, setIsKorea] = useState(true);//한유찬이 로그인 누를때마다 알잘딱 나라 보내준다고함.
   return (
     <>
       <div className={s.container}>
@@ -15,6 +17,7 @@ export default function LoginModal() {
           size="large"
           variant="secondary"
           fullWidth
+          className={s.google_button}
           leadingIcon={
             <img
               src="/google.svg"
@@ -26,7 +29,7 @@ export default function LoginModal() {
         >
           구글로 시작하기
         </Button>
-        <Button
+        {isKorea && (<><Button
           size="large"
           variant="secondary"
           fullWidth
@@ -42,7 +45,29 @@ export default function LoginModal() {
         >
           카카오톡으로 시작하기
         </Button>
+        <Button
+          size="large"
+          variant="secondary"
+          fullWidth
+          className={s.naver_button}
+          leadingIcon={
+            <img
+              src="/naver.svg"
+              alt="naver"
+              style={{ width: "20px", height: "20px" }}
+            />
+          }
+          onClick={() => console.log("naver login")}
+        >
+          네이버로 시작하기
+        </Button>
+        </>)}
+        
         </div>
+        <Spacing size={8} />
+        <Link to="/auth/login/number" className={s.number_container}>
+            <Typo.BodyLarge>전화번호로 시작하기</Typo.BodyLarge> <ChevronRight size={21} />
+        </Link>
       </>
   );
 }

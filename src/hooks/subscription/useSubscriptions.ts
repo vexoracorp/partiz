@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getSubscription } from "@/api";
+import { getSubscriptions } from "@/api";
 import type { Subscription } from "@/types/subscription";
 
 export function useSubscriptions() {
@@ -9,7 +9,7 @@ export function useSubscriptions() {
     Error
   >({
     queryKey: ["subscription"],
-    queryFn: () => getSubscription(),
+    queryFn: () => getSubscriptions(),
   });
 
   return {

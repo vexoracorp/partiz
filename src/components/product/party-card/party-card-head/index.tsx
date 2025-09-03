@@ -30,7 +30,7 @@ export default function PartyCardHead({
           {isSubscribed ? (
             <Typo.BodyLarge>{remainingDays}일 남음</Typo.BodyLarge>
           ) : (
-            <Typo.BodyLarge>{productPrice}원</Typo.BodyLarge>
+            <Typo.BodyLarge>{Number(productPrice).toLocaleString()}원</Typo.BodyLarge>
           )}
         </div>
     </div>

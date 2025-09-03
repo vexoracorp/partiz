@@ -1,4 +1,4 @@
-import { PartyAvatar } from "@/components/product";
+import PartyAvatar from "@/components/product/shared/party-avatar";
 
 import type { PartyCardMemberInfo } from "../../party-card.type";
 

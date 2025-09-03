@@ -4,7 +4,7 @@ import s from "./style.module.scss";
 
 interface Props {
   title: string;
-  partyCount?: string;
+  partyCount?: number;
   tag: string[];
   image: string;
   rightContent?: React.ReactNode;

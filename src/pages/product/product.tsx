@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 
-import Content from "@/components/content/recommend-list";
+import { RecommendContent } from "@/components/content";
 import { MainLayout } from "@/components/layouts";
 import {
   PartyCard,
@@ -8,17 +8,13 @@ import {
   ProductQuestion,
 } from "@/components/product";
 import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
-import { MockParty } from "@/mock/party";
-import { MockProducts } from "@/mock/product";
+import { useProduct } from "@/hooks/product";
 import { isStreamingProduct } from "@/utils/category";
-import { findProductById } from "@/utils/product";
 
 export default function Product() {
   const navigate = useNavigate();
   const { id } = useParams();
-
-  // URL 파라미터로 실제 상품 찾기
-  const product = findProductById(MockProducts, id || "");
+  const { product } = useProduct(id || "");
 
   if (!product) {
     return (
@@ -40,7 +36,7 @@ export default function Product() {
       <MainLayout gap={42}>
         <ProductHeader
           title={product.name}
-          partyCount={MockParty.length.toString()}
+          partyCount={product.plan.length}
           tag={product.category}
           image={product.image}
         />
@@ -63,7 +59,7 @@ export default function Product() {
         </VStack>
         <Spacing size={25} />
         <ProductQuestion {...product} />
-        {isStreamingProduct(product) && <Content />}
+        {isStreamingProduct(product) && <RecommendContent />}
       </MainLayout>
     </>
   );

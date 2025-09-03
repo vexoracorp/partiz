@@ -11,18 +11,16 @@ import {
   RelatedProducts,
 } from "@/components/product";
 import { Button, Header, Modal, Spacing } from "@/components/ui";
-import { MockProducts } from "@/mock/product";
-import type { Product } from "@/types/product";
+import { useProductParty } from "@/hooks/product";
 
 export default function ProductDetail() {
   const { id, partyId } = useParams<{ id: string; partyId: string }>();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const product = MockProducts.find((p: Product) => p.id === id);
-  const plan = partyId
-    ? product?.plan.find((p) => p.id === partyId) || product?.plan[0]
-    : product?.plan[0];
 
-  if (!product || !plan) {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const { data } = useProductParty(id || "", partyId || "");
+
+  if (!data) {
     return (
       <>
         <Header />
@@ -46,9 +44,9 @@ export default function ProductDetail() {
       <Spacing size={25} />
       <MainLayout gap={42} style={{ alignItems: "flex-start" }}>
         <ProductHeader
-          title={product.name}
-          tag={product.category.map((cat) => cat.toString())}
-          image={product.image}
+          title={data.product.name}
+          tag={data.product.category}
+          image={data.product.image}
           rightContent={
             <Button
               variant="primary"
@@ -59,11 +57,11 @@ export default function ProductDetail() {
             </Button>
           }
         />
-        <ProductInfo plan={plan} />
-        <PartyMembers plan={plan} />
-        <ProductDescription description={plan.description} />
+        <ProductInfo plan={data.party} />
+        <PartyMembers plan={data.party} />
+        <ProductDescription description={data.party.description} />
         <Spacing size={25} />
-        <RelatedProducts product={product} name={product.name} />
+        <RelatedProducts product={data.product} name={data.product.name} />
       </MainLayout>
 
       <Modal
@@ -73,8 +71,8 @@ export default function ProductDetail() {
         size="md"
       >
         <PaymentModal
-          product={product}
-          plan={plan}
+          product={data.product}
+          plan={data.party}
           onClose={() => setIsDialogOpen(false)}
         />
       </Modal>

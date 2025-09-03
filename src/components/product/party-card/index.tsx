@@ -39,11 +39,13 @@ export default function PartyCard({
         endDate={endDate}
         isSubscribed={isSubscribed}
       />
+      {isParty && (
       <PartyCardMember
         currentMembers={currentMembers}
         maxMembers={maxMembers}
         isParty={isParty}
       />
+      )}
       <PartyCardInfo 
         endDate={endDate}
         membersLeft={membersLeft}

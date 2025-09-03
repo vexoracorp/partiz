@@ -20,8 +20,7 @@ export interface Plan {
   description: string;
 
   price: number;
-  discountPrice: number;
-  discountRate: number;
+  originalPrice: number;
 
   participants: Participant[];
   maxParticipants: number;

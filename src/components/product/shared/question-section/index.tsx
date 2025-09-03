@@ -5,7 +5,7 @@ import type { Product } from "@/types/product";
 
 import styles from "./style.module.scss";
 
-export default function ProductQuestion(props: Product) {
+export default function ProductQuestionSection(props: Product) {
   const { serviceName, question, image } = props;
 
   return (
@@ -22,7 +22,12 @@ export default function ProductQuestion(props: Product) {
       </VStack>
       <HStack gap={12}>
         {question.images.map((image, index) => (
-          <img key={index} src={image} alt={serviceName} className={styles.image} />
+          <img
+            key={index}
+            src={image}
+            alt={serviceName}
+            className={styles.image}
+          />
         ))}
       </HStack>
     </HStack>

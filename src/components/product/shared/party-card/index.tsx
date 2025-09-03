@@ -23,7 +23,7 @@ export default function PartyCard(props: PartyCardProps) {
   const isParty = getCardVariant(props) === "party";
 
   return (
-    <div className={s.container}>
+    <div className={s.container} onClick={props.onClick}>
       <PartyCardHead
         {...product}
         endDate={endDate}
@@ -37,6 +37,7 @@ export default function PartyCard(props: PartyCardProps) {
         isSubscribed={isSubscribed}
       />
       <PartyCardButton
+        {...member}
         isParty={isParty}
         isSubscribed={isSubscribed}
         onClick={props.onClick}

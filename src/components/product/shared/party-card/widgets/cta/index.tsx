@@ -1,20 +1,31 @@
 import { Button } from "@/components/ui";
 
-interface Props {
+import type { PartyCardMemberInfo } from "../../party-card.type";
+
+interface Props extends PartyCardMemberInfo {
   isParty: boolean;
   isSubscribed: boolean;
   onClick?: () => void;
 }
 
-export default function PartyCardButton({
+export default function PartyCardCTA({
   isParty,
   isSubscribed,
+  left,
   onClick,
 }: Props) {
   if (isSubscribed) {
     return (
       <Button size="medium" variant="tertiary" fullWidth onClick={onClick}>
         구독관리
+      </Button>
+    );
+  }
+
+  if (left === 0) {
+    return (
+      <Button size="medium" variant="tertiary" fullWidth onClick={onClick}>
+        마감된 파티
       </Button>
     );
   }

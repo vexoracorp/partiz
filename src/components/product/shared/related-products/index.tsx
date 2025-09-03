@@ -52,6 +52,7 @@ export default function RelatedProducts({
       <HStack gap={16} wrap>
         {relatedProducts.map((relatedProduct) => (
           <a
+            key={relatedProduct.id}
             href={`/product/${relatedProduct.id}`}
             className={styles.productCardContainer}
           >

@@ -17,7 +17,7 @@ export default function ProductInfo({ plan }: ProductInfoProps) {
     <div className={styles.container}>
       <div className={styles.infoItem}>
         <Typo.Subtext>참여 비용</Typo.Subtext>
-        <Typo.Headline>{plan.discountPrice.toLocaleString()}원</Typo.Headline>
+        <Typo.Headline>{plan.price.toLocaleString()}원</Typo.Headline>
       </div>
       <div className={styles.infoItem}>
         <Typo.Subtext>종료일</Typo.Subtext>

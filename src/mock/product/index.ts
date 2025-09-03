@@ -1,7 +1,35 @@
 import { Category } from "@/types/category";
-import type { Participant, Product } from "@/types/product";
+import { type Participant, PlanType, type Product } from "@/types/product";
 
 const createDate = (iso: string) => new Date(iso);
+
+// 랜덤 날짜 생성 함수들
+const createRandomDate = (startYear: number, endYear: number) => {
+  const start = new Date(startYear, 0, 1);
+  const end = new Date(endYear, 11, 31);
+  const randomTime =
+    start.getTime() + Math.random() * (end.getTime() - start.getTime());
+  return new Date(randomTime);
+};
+
+const createRandomEndDate = () => {
+  // 2025년 1월부터 2026년 12월까지 랜덤
+  return createRandomDate(2025, 2026);
+};
+
+const createRandomCreatedDate = () => {
+  // 2024년 1월부터 2024년 12월까지 랜덤
+  return createRandomDate(2024, 2024);
+};
+
+const createRandomUpdatedDate = (createdDate: Date) => {
+  // 생성일 이후부터 현재까지 랜덤
+  const now = new Date();
+  const randomTime =
+    createdDate.getTime() +
+    Math.random() * (now.getTime() - createdDate.getTime());
+  return new Date(randomTime);
+};
 
 // 참여자 목 데이터 생성을 위한 이름 목록
 const mockNames = [
@@ -65,29 +93,47 @@ const createPlan = (
   id: string,
   name: string,
   price: number,
+  type: PlanType,
   discountRate = 10,
   participantCount?: number,
-  isIndividual = false, // 개인 구독 여부
 ) => {
-  const discountPrice = Math.round(price * (1 - discountRate / 100));
-  const maxParticipants = isIndividual ? 1 : 4;
-  // participantCount가 지정되지 않은 경우 설정
-  const actualParticipantCount = isIndividual 
-    ? 0 // 개인 구독은 현재 참여자 0명
-    : (participantCount ?? Math.floor(Math.random() * maxParticipants));
+  const originalPrice = price;
 
+  // PlanType에 따른 최대 참여자 수 설정
+  const getMaxParticipants = (planType: PlanType): number => {
+    switch (planType) {
+      case PlanType.INDIVIDUAL:
+        return 1;
+      case PlanType.PARTY:
+        return 4;
+      default:
+        return 4;
+    }
+  };
+
+  const maxParticipants = getMaxParticipants(type);
+
+  // participantCount가 지정되지 않은 경우 설정
+  const actualParticipantCount =
+    type === PlanType.INDIVIDUAL
+      ? 0 // 개인 구독은 현재 참여자 0명
+      : (participantCount ?? Math.floor(Math.random() * maxParticipants));
+
+  const createdAt = createRandomCreatedDate();
+  const updatedAt = createRandomUpdatedDate(createdAt);
   return {
     id,
+    type,
     name,
     description: `${name} 플랜`,
     price,
-    discountPrice,
+    originalPrice,
     discountRate,
     participants: createRandomParticipants(actualParticipantCount),
     maxParticipants,
-    endDate: createDate("2025-12-31"),
-    createdAt: createDate("2024-01-01"),
-    updatedAt: createDate("2024-06-01"),
+    endDate: createRandomEndDate(),
+    createdAt,
+    updatedAt,
   };
 };
 
@@ -104,11 +150,40 @@ export const MockProducts: Product[] = [
     popularProduct: true,
     mostUsedProduct: true,
     plan: [
-      createPlan("pl_ai_001", "Party Plan", 20000, 10, 2),
-      createPlan("pl_ai_001_individual", "Individual Plan", 24000, 0, 0, true)
+      createPlan("pl_ai_001_party", "Party Plan", 20000, PlanType.PARTY, 10, 2),
+      createPlan(
+        "pl_ai_001_individual",
+        "Individual Plan",
+        24000,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan(
+        "pl_ai_001_party2",
+        "Premium Party Plan",
+        35000,
+        PlanType.PARTY,
+        15,
+        3,
+      ),
+      createPlan(
+        "pl_ai_001_individual2",
+        "Student Plan",
+        15000,
+        PlanType.INDIVIDUAL,
+        20,
+      ),
+      createPlan(
+        "pl_ai_001_party3",
+        "Enterprise Party Plan",
+        45000,
+        PlanType.PARTY,
+        5,
+        5,
+      ),
     ],
-    createdAt: createDate("2024-01-10"),
-    updatedAt: createDate("2024-06-10"),
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description: "ChatGPT는 OpenAI에서 제공하는 AI 모델입니다.",
       images: ["/image/product/chatgpt.png"],
@@ -124,9 +199,26 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_ai_002", "Standard", 25000, 10, 4)],
-    createdAt: createDate("2024-01-11"),
-    updatedAt: createDate("2024-06-11"),
+    plan: [
+      createPlan(
+        "pl_ai_002_individual",
+        "Basic Plan",
+        25000,
+        PlanType.INDIVIDUAL,
+        10,
+      ),
+      createPlan("pl_ai_002_party", "Party Plan", 30000, PlanType.PARTY, 15, 3),
+      createPlan(
+        "pl_ai_002_party2",
+        "Enterprise Party Plan",
+        80000,
+        PlanType.PARTY,
+        0,
+        10,
+      ),
+    ],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description: "Claude는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
       images: ["/image/product/chatgpt.png"],
@@ -142,9 +234,25 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: false,
     mostUsedProduct: true,
-    plan: [createPlan("pl_ai_004", "Standard", 20000, 10, 3)],
-    createdAt: createDate("2024-01-14"),
-    updatedAt: createDate("2024-06-14"),
+    plan: [
+      createPlan(
+        "pl_ai_004_individual",
+        "Individual Plan",
+        20000,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan("pl_ai_004_party", "Party Plan", 25000, PlanType.PARTY, 10, 3),
+      createPlan(
+        "pl_ai_004_student",
+        "Student Plan",
+        12000,
+        PlanType.INDIVIDUAL,
+        25,
+      ),
+    ],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "Perplexity는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
@@ -161,9 +269,34 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_ai_005", "Standard", 24000, 10, 0)],
-    createdAt: createDate("2024-01-15"),
-    updatedAt: createDate("2024-06-15"),
+    plan: [
+      createPlan(
+        "pl_ai_005_basic",
+        "Basic Plan",
+        24000,
+        PlanType.INDIVIDUAL,
+        10,
+        1,
+      ),
+      createPlan(
+        "pl_ai_005_family",
+        "Family Plan",
+        40000,
+        PlanType.PARTY,
+        15,
+        4,
+      ),
+      createPlan(
+        "pl_ai_005_enterprise",
+        "Enterprise Plan",
+        100000,
+        PlanType.PARTY,
+        0,
+        15,
+      ),
+    ],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "Google One는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
@@ -183,11 +316,47 @@ export const MockProducts: Product[] = [
     popularProduct: true,
     mostUsedProduct: true,
     plan: [
-      createPlan("pl_music_001", "Party Plan", 13900, 10, 3),
-      createPlan("pl_music_001_individual", "Individual Plan", 16900, 0, 0, true)
+      createPlan(
+        "pl_music_001_individual",
+        "Individual Plan",
+        16900,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan(
+        "pl_music_001_party",
+        "Party Plan",
+        13900,
+        PlanType.PARTY,
+        10,
+        3,
+      ),
+      createPlan(
+        "pl_music_001_family",
+        "Family Plan",
+        22000,
+        PlanType.PARTY,
+        15,
+        4,
+      ),
+      createPlan(
+        "pl_music_001_student",
+        "Student Plan",
+        8500,
+        PlanType.INDIVIDUAL,
+        30,
+      ),
+      createPlan(
+        "pl_music_001_premium",
+        "Premium Plan",
+        25000,
+        PlanType.PARTY,
+        5,
+        6,
+      ),
     ],
-    createdAt: createDate("2024-02-01"),
-    updatedAt: createDate("2024-06-20"),
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "Spotify는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
@@ -207,9 +376,33 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: false,
     mostUsedProduct: false,
-    plan: [createPlan("pl_music_003", "Standard", 14900)],
-    createdAt: createDate("2024-02-04"),
-    updatedAt: createDate("2024-06-23"),
+    plan: [
+      createPlan(
+        "pl_music_003_individual",
+        "Individual Plan",
+        14900,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan(
+        "pl_music_003_party",
+        "Party Plan",
+        18000,
+        PlanType.PARTY,
+        10,
+        2,
+      ),
+      createPlan(
+        "pl_music_003_family",
+        "Family Plan",
+        28000,
+        PlanType.PARTY,
+        15,
+        3,
+      ),
+    ],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description: "Tidal는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
       images: ["/image/product/chatgpt.png"],
@@ -225,9 +418,40 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_music_004", "Standard", 10900)],
-    createdAt: createDate("2024-02-05"),
-    updatedAt: createDate("2024-06-24"),
+    plan: [
+      createPlan(
+        "pl_music_004_individual",
+        "Individual Plan",
+        10900,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan(
+        "pl_music_004_party",
+        "Party Plan",
+        13000,
+        PlanType.PARTY,
+        10,
+        3,
+      ),
+      createPlan(
+        "pl_music_004_student",
+        "Student Plan",
+        6500,
+        PlanType.INDIVIDUAL,
+        25,
+      ),
+      createPlan(
+        "pl_music_004_family",
+        "Family Plan",
+        20000,
+        PlanType.PARTY,
+        15,
+        4,
+      ),
+    ],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "YouTube Music는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
@@ -247,11 +471,47 @@ export const MockProducts: Product[] = [
     popularProduct: true,
     mostUsedProduct: true,
     plan: [
-      createPlan("pl_stream_001", "Party Plan", 17000, 10, 4),
-      createPlan("pl_stream_001_individual", "Individual Plan", 20900, 0, 0, true)
+      createPlan(
+        "pl_stream_001_individual",
+        "Individual Plan",
+        20900,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan(
+        "pl_stream_001_party",
+        "Party Plan",
+        17000,
+        PlanType.PARTY,
+        10,
+        4,
+      ),
+      createPlan(
+        "pl_stream_001_family",
+        "Family Plan",
+        28000,
+        PlanType.PARTY,
+        15,
+        5,
+      ),
+      createPlan(
+        "pl_stream_001_student",
+        "Student Plan",
+        12000,
+        PlanType.INDIVIDUAL,
+        20,
+      ),
+      createPlan(
+        "pl_stream_001_premium",
+        "Premium Plan",
+        35000,
+        PlanType.PARTY,
+        5,
+        6,
+      ),
     ],
-    createdAt: createDate("2024-03-01"),
-    updatedAt: createDate("2024-06-28"),
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "Netflix는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
@@ -268,9 +528,41 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_stream_003", "Premium", 17000, 10, 4)],
-    createdAt: createDate("2024-03-01"),
-    updatedAt: createDate("2024-06-28"),
+    plan: [
+      createPlan(
+        "pl_stream_003_individual",
+        "Individual Plan",
+        17000,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan(
+        "pl_stream_003_party",
+        "Party Plan",
+        20000,
+        PlanType.PARTY,
+        10,
+        3,
+      ),
+      createPlan(
+        "pl_stream_003_family",
+        "Family Plan",
+        32000,
+        PlanType.PARTY,
+        15,
+        4,
+      ),
+      createPlan(
+        "pl_stream_003_premium",
+        "Premium Plan",
+        40000,
+        PlanType.PARTY,
+        5,
+        5,
+      ),
+    ],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description: "TVING는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
       images: ["/image/product/chatgpt.png"],
@@ -286,9 +578,40 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: false,
-    plan: [createPlan("pl_stream_002", "Standard", 9900, 10, 1)],
-    createdAt: createDate("2024-03-02"),
-    updatedAt: createDate("2024-06-29"),
+    plan: [
+      createPlan(
+        "pl_stream_002_individual",
+        "Individual Plan",
+        9900,
+        PlanType.INDIVIDUAL,
+        0,
+      ),
+      createPlan(
+        "pl_stream_002_party",
+        "Party Plan",
+        12000,
+        PlanType.PARTY,
+        10,
+        1,
+      ),
+      createPlan(
+        "pl_stream_002_family",
+        "Family Plan",
+        20000,
+        PlanType.PARTY,
+        15,
+        3,
+      ),
+      createPlan(
+        "pl_stream_002_student",
+        "Student Plan",
+        7000,
+        PlanType.INDIVIDUAL,
+        25,
+      ),
+    ],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "Disney+는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
@@ -305,9 +628,9 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_stream_003", "Standard", 12900)],
-    createdAt: createDate("2024-03-10"),
-    updatedAt: createDate("2024-07-07"),
+    plan: [createPlan("pl_stream_003", "Standard", 12900, PlanType.INDIVIDUAL)],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "YouTube Premium는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",
@@ -324,9 +647,9 @@ export const MockProducts: Product[] = [
     gallery: ["/image/product/chatgpt.png"],
     popularProduct: true,
     mostUsedProduct: true,
-    plan: [createPlan("pl_stream_004", "Standard", 11900)],
-    createdAt: createDate("2024-03-11"),
-    updatedAt: createDate("2024-07-08"),
+    plan: [createPlan("pl_stream_004", "Standard", 11900, PlanType.INDIVIDUAL)],
+    createdAt: createRandomCreatedDate(),
+    updatedAt: createRandomUpdatedDate(createRandomCreatedDate()),
     question: {
       description:
         "Amazon Prime Video는 현존 최고 코딩 모델이며, 코딩을 할 때 사용합니다.",

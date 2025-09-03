@@ -25,12 +25,14 @@ export default function PartyCardInfo({
       <Typo.Subtext>{dateText}</Typo.Subtext>
       {isParty ? (
         isSubscribed ? (
-          <Typo.Subtext>계정공유</Typo.Subtext>
+          <Typo.Caption className={s.fucking_special}>계정공유</Typo.Caption>
         ) : (
           <Typo.Subtext>{membersLeft}자리 남음</Typo.Subtext>
         )
       ) : (
-        <Typo.Subtext>개인 계정 적용</Typo.Subtext>
+        <Typo.Caption className={s.fucking_special}>
+          개인 계정 적용
+        </Typo.Caption>
       )}
     </div>
   );

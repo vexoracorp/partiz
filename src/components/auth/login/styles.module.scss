@@ -24,3 +24,32 @@
 .kakao_button:hover {
   background-color: #FFE300 !important;
 }
+
+.google_button {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  border: 1px solid #E0E0E0 !important;
+}
+
+.google_button:hover {
+  background-color: #F5F5F5 !important;
+}
+
+.naver_button {
+  background-color: #06C75A !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.naver_button:hover {
+  background-color: #05B350 !important;
+}
+
+.number_container {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  color: $color-text;
+  text-decoration: none;
+  cursor: pointer;
+}

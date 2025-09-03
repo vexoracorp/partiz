@@ -11,7 +11,6 @@ export default function PartyCardMember({ currentMembers, maxMembers, isParty }:
     
   return (
     <div className={s.container}>
-    {isParty && (
           <div className={s.member}>
           {Array.from({ length: maxMembers }, (_, i) => (
             <PartyAvatar
@@ -21,7 +20,6 @@ export default function PartyCardMember({ currentMembers, maxMembers, isParty }:
             />
           ))}
         </div>
-        )}
     </div>
   );
 }

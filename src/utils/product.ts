@@ -10,9 +10,7 @@ export const getMinPlanPrice = (plans: Plan[]): number => {
   }
 
   return Math.min(
-    ...plans.map((plan) =>
-      plan.discountPrice > 0 ? plan.discountPrice : plan.price,
-    ),
+    ...plans.map((plan) => (plan.price > 0 ? plan.price : plan.price)),
   );
 };
 
@@ -35,13 +33,6 @@ export const getMinPriceFromProducts = (products: Product[]): number => {
 };
 
 /**
- * Plan의 실제 표시 가격을 구합니다 (할인 가격 우선, 없으면 일반 가격).
- */
-export const getDisplayPrice = (plan: Plan): number => {
-  return plan.discountPrice > 0 ? plan.discountPrice : plan.price;
-};
-
-/**
  * Product의 가장 저렴한 플랜을 구합니다.
  */
 export const getCheapestPlan = (product: Product): Plan | null => {
@@ -50,8 +41,8 @@ export const getCheapestPlan = (product: Product): Plan | null => {
   }
 
   return product.plan.reduce((cheapest, current) => {
-    const cheapestPrice = getDisplayPrice(cheapest);
-    const currentPrice = getDisplayPrice(current);
+    const cheapestPrice = cheapest.price;
+    const currentPrice = current.price;
     return currentPrice < cheapestPrice ? current : cheapest;
   });
 };

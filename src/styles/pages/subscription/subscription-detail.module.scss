@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+
+    display: grid;
+    grid-template-areas: 
+        'title  account'
+        'product account';
+    grid-template-rows: auto auto auto;
+    gap: 1rem;
+}
+
+.titleSection {
+    grid-area: title;
+}
+
+.accountSection {
+    grid-area: account;
+}
+
+.productSection {
+    grid-area: product;
+}

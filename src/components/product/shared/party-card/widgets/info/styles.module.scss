@@ -1,0 +1,15 @@
+.subscription{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    color: $color-text-subtle;
+}
+
+.fucking_special {
+    background-color: #f86014;
+    color: $color-text-white;
+    padding: $spacing-4 $spacing-8;
+    border-radius: $radius-8;
+    font-weight: 700;
+}

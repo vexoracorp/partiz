@@ -10,6 +10,7 @@ import {
 } from "@/pages";
 import Signup from "@/pages/auth/signup";
 import Service from "@/pages/service";
+import SubscriptionDetail from "@/pages/subscription/subscription-detail";
 
 const Router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const Router = createBrowserRouter([
   {
     path: "/subscription",
     element: <Subscription />,
+  },
+  {
+    path: "/subscription/:id",
+    element: <SubscriptionDetail />,
   },
   {
     path: "/service",

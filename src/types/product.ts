@@ -1,5 +1,10 @@
 import type { Category } from "./category";
 
+export enum PlanType {
+  INDIVIDUAL = "individual",
+  PARTY = "party",
+}
+
 export interface Participant {
   id: string;
   name: string;
@@ -9,12 +14,13 @@ export interface Participant {
 export interface Plan {
   id: string;
 
+  type: PlanType;
+
   name: string;
   description: string;
 
   price: number;
-  discountPrice: number;
-  discountRate: number;
+  originalPrice: number;
 
   participants: Participant[];
   maxParticipants: number;

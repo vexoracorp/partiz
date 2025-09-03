@@ -37,8 +37,8 @@ export default function Header() {
             <HeaderItem
               text={"서비스"}
               icon={ShoppingCart}
-              href={"/product-list"}
-              isActive={pathname.startsWith("/product-list")}
+              href={"/service"}
+              isActive={pathname.startsWith("/service")}
             />
             <HeaderItem
               text={"컨텐츠"}

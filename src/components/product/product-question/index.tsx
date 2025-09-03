@@ -21,8 +21,8 @@ export default function ProductQuestion(props: Product) {
         <Typo.Body>{question.description}</Typo.Body>
       </VStack>
       <HStack gap={12}>
-        {question.images.map((image) => (
-          <img src={image} alt={serviceName} className={styles.image} />
+        {question.images.map((image, index) => (
+          <img key={index} src={image} alt={serviceName} className={styles.image} />
         ))}
       </HStack>
     </HStack>

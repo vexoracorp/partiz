@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
+
 import { MainLayout } from "@/components/layouts";
 import { PartyCard } from "@/components/product";
 import { Header, HStack, Spacing, Typo, VStack } from "@/components/ui";
-import { getSubscriptionWithProduct, getUnsubscribedProducts } from "@/mock/subscription";
+import {
+  getSubscriptionWithProduct,
+  getUnsubscribedProducts,
+} from "@/mock/subscription";
 
 /**
  * Subscription page component that shows user's current subscriptions.
@@ -10,7 +14,9 @@ import { getSubscriptionWithProduct, getUnsubscribedProducts } from "@/mock/subs
 export default function Subscription() {
   const navigate = useNavigate();
   const subscriptions = getSubscriptionWithProduct();
-  const activeSubscriptions = subscriptions.filter(sub => sub.status === "active");
+  const activeSubscriptions = subscriptions.filter(
+    (sub) => sub.status === "active",
+  );
   const unsubscribedProducts = getUnsubscribedProducts();
 
   // 구독과 미구독 상품이 모두 없을 때 예외 처리
@@ -40,7 +46,7 @@ export default function Subscription() {
                 const currentMembers = subscription.currentMembers || 0;
                 const maxMembers = subscription.maxMembers || 0;
                 const membersLeft = Math.max(0, maxMembers - currentMembers);
-                
+
                 return (
                   <PartyCard
                     key={subscription.id}
@@ -55,7 +61,9 @@ export default function Subscription() {
                     isSubscribed={true}
                     onClick={() => {
                       if (subscription.isParty) {
-                        navigate(`/product/${subscription.productId}/party/${subscription.planId}`);
+                        navigate(
+                          `/product/${subscription.productId}/party/${subscription.planId}`,
+                        );
                       } else {
                         navigate(`/product/${subscription.productId}`);
                       }

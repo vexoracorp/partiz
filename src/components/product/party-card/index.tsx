@@ -1,8 +1,8 @@
 import s from "./styles.module.scss";
 import PartyCardHead from "./party-card-head";
-import PartyCardIsParty from "./party-card-isparty";
 import PartyCardInfo from "./party-card-info";
 import PartyCardButton from "./party-card-button";
+import PartyCardMember from "./party-card-member";
 
 interface Props {
   productImage: string;
@@ -39,7 +39,7 @@ export default function PartyCard({
         endDate={endDate}
         isSubscribed={isSubscribed}
       />
-      <PartyCardIsParty 
+      <PartyCardMember
         currentMembers={currentMembers}
         maxMembers={maxMembers}
         isParty={isParty}

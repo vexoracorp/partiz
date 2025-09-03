@@ -7,7 +7,7 @@ interface Props {
   isParty: boolean;
 }
 
-export default function PartyCardIsParty({ currentMembers, maxMembers, isParty }: Props) {
+export default function PartyCardMember({ currentMembers, maxMembers, isParty }: Props) {
     const renderPartyAvatars = () => {
     const avatars = [];
     

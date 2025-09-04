@@ -11,8 +11,20 @@ const createSubscription = (
   endDate: Date,
   status: "active" | "expired" | "cancelled" | "pending",
 ): Subscription => {
-  const product = MockProducts.find((p) => p.id === productId)!;
-  const plan = product.plan.find((pl) => pl.id === planId)!;
+  const product = MockProducts.find((p) => p.id === productId);
+  if (!product) {
+    throw new Error(`Product not found: ${productId}`);
+  }
+
+  const plan = product.plan.find((pl) => pl.id === planId);
+  if (!plan) {
+    console.error(`Plan not found: ${planId} for product: ${productId}`);
+    console.error(
+      `Available plans for ${productId}:`,
+      product.plan.map((p) => p.id),
+    );
+    throw new Error(`Plan not found: ${planId} for product: ${productId}`);
+  }
 
   return {
     id,
@@ -30,7 +42,7 @@ export const MockUserSubscriptions: Subscription[] = [
   createSubscription(
     "sub_001",
     "p_ai_001", // ChatGPT Plus
-    "pl_ai_001",
+    "pl_ai_001_party", // 실제 plan ID로 수정
     new Date("2024-11-01"),
     new Date("2025-06-15"),
     "active",
@@ -38,7 +50,7 @@ export const MockUserSubscriptions: Subscription[] = [
   createSubscription(
     "sub_002",
     "p_music_001", // Spotify Premium
-    "pl_music_001",
+    "pl_music_001_party", // 실제 plan ID로 수정
     new Date("2024-10-15"),
     new Date("2025-04-20"),
     "active",
@@ -46,7 +58,7 @@ export const MockUserSubscriptions: Subscription[] = [
   createSubscription(
     "sub_003",
     "p_stream_001", // Netflix
-    "pl_stream_001",
+    "pl_stream_001_party", // 실제 plan ID로 수정
     new Date("2024-09-01"),
     new Date("2024-12-01"),
     "expired",
@@ -54,7 +66,7 @@ export const MockUserSubscriptions: Subscription[] = [
   createSubscription(
     "sub_004",
     "p_ai_002", // Claude Pro
-    "pl_ai_002",
+    "pl_ai_002_individual", // 실제 plan ID로 수정
     new Date("2024-11-10"),
     new Date("2025-08-25"),
     "active",
@@ -62,7 +74,7 @@ export const MockUserSubscriptions: Subscription[] = [
   createSubscription(
     "sub_005",
     "p_music_004", // YouTube Music
-    "pl_music_004",
+    "pl_music_004_party", // 실제 plan ID로 수정
     new Date("2024-11-01"),
     new Date("2025-05-01"),
     "active",
@@ -70,7 +82,7 @@ export const MockUserSubscriptions: Subscription[] = [
   createSubscription(
     "sub_006",
     "p_ai_004", // Perplexity Pro
-    "pl_ai_004",
+    "pl_ai_004_individual", // 실제 plan ID로 수정
     new Date("2024-10-20"),
     new Date("2025-07-20"),
     "active",

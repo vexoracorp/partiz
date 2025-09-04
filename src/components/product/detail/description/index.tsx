@@ -11,7 +11,7 @@ export default function ProductDescription({
 }: ProductDescriptionProps) {
   return (
     <div className={styles.container}>
-      <Typo.BodyLarge>제품 설명</Typo.BodyLarge>
+      <Typo.Body>제품 설명</Typo.Body>
       <Typo.Body as={"p"} className={styles.descriptionText}>
         {description}
       </Typo.Body>

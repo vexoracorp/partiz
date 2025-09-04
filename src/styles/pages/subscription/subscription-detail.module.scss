@@ -19,4 +19,10 @@
 
 .productSection {
     grid-area: product;
+
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+
+    margin-top: $spacing-16;
 }

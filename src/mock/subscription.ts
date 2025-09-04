@@ -68,7 +68,7 @@ export const MockUserSubscriptions: Subscription[] = [
     "p_ai_002", // Claude Pro
     "pl_ai_002_individual", // 실제 plan ID로 수정
     new Date("2024-11-10"),
-    new Date("2025-08-25"),
+    new Date("2026-08-25"),
     "active",
   ),
   createSubscription(

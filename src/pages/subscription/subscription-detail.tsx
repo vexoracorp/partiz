@@ -44,6 +44,25 @@ export default function SubscriptionDetail() {
                   icon: "Mailbox",
                   actionTypeId: "joinParty",
                 },
+                {
+                  context: "account",
+                  product: subscription.product,
+                  field: [
+                    {
+                      name: "아이디",
+                      value: "minecraft1.25freedownload",
+                      icon: "User",
+                      secure: false,
+                    },
+                    {
+                      name: "비밀번호",
+                      value: "youchan-myyouchan1928ang!",
+                      icon: "Lock",
+                      secure: true,
+                    },
+                  ],
+                  troubleSupportUrl: "",
+                },
               ]}
             />
           </section>

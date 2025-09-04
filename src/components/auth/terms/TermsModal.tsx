@@ -55,7 +55,7 @@ export default function TermsModal() {
         <div className="check-box">
           <div className="terms">
             <Checkbox
-              label="이용약관 동의 (필수)"
+              label="이용약관 동의"
               checked={checkedState.termsOfService}
               onCheckedChange={(checked) =>
                 handleItemChange("termsOfService", checked)

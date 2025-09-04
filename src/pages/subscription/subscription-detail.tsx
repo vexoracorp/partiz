@@ -39,6 +39,7 @@ export default function SubscriptionDetail() {
               form={[
                 {
                   context: "account",
+                  id: "account-joinParty",
                   product: subscription.product,
                   field: [
                     {
@@ -58,6 +59,7 @@ export default function SubscriptionDetail() {
                 },
                 {
                   context: "button",
+                  id: "button-joinParty",
                   label: "계정 인증 조회하기",
                   name: "joinParty",
                   icon: "Mailbox",
@@ -65,6 +67,7 @@ export default function SubscriptionDetail() {
                 },
                 {
                   context: "form",
+                  id: "form-joinParty",
                   title: "본인 계정 적용 이메일",
                   product: subscription.product,
                   description: "계정 적용을 위해 아래 이메일을 입력해주세요",

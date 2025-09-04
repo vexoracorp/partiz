@@ -1,7 +1,8 @@
 import type { Product } from "@/types/product";
 
-interface ButtonProps {
+export interface ButtonProps {
   context: "button";
+  id: string;
   label: string;
   name: string;
   icon: string;
@@ -10,6 +11,7 @@ interface ButtonProps {
 
 export interface AccountProps {
   context: "account";
+  id: string;
   product: Product;
   field: { name: string; value: string; icon: string; secure: boolean }[];
   troubleSupportUrl: string;
@@ -17,6 +19,7 @@ export interface AccountProps {
 
 export interface FormProps {
   context: "form";
+  id: string;
   product: Product;
   title: string;
   description: string;

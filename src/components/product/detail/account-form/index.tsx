@@ -1,7 +1,7 @@
-import { Button, VStack } from "@/components/ui";
-import { getDynamicIcon } from "@/utils/lucide";
+import { VStack } from "@/components/ui";
 
 import AccountWidget from "./widget/account";
+import ButtonWidget from "./widget/button";
 import FormWidget from "./widget/form";
 import type { AccountFormItem } from "./account-form.type";
 
@@ -16,21 +16,16 @@ export default function AccountFormBuilder({ form }: AccountFormBuilderProps) {
         switch (item.context) {
           case "button":
             return (
-              <Button
-                key={item.name}
-                fullWidth
-                size="large"
-                leadingIcon={getDynamicIcon(item.icon)}
-              >
-                {item.label}
-              </Button>
+              <ButtonWidget key={`${item.context}-${item.id}`} {...item} />
             );
 
           case "account":
-            return <AccountWidget {...item} />;
+            return (
+              <AccountWidget key={`${item.context}-${item.id}`} {...item} />
+            );
 
           case "form":
-            return <FormWidget {...item} />;
+            return <FormWidget key={`${item.context}-${item.id}`} {...item} />;
 
           default:
             break;

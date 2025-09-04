@@ -1,4 +1,5 @@
 export { default as PaymentModal } from "../billing/payment-modal";
+export { default as AccountFormBuilder } from "./detail/account-form";
 export { default as ProductDescription } from "./detail/description";
 export { default as ProductHeader } from "./detail/header";
 export { default as ProductInfo } from "./detail/info";

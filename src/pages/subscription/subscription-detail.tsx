@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 
 import { MainLayout } from "@/components/layouts";
 import {
+  AccountFormBuilder,
   PartyMembers,
   ProductDescription,
   ProductHeader,
@@ -33,7 +34,19 @@ export default function SubscriptionDetail() {
               endDate={subscription.endDate}
             />
           </section>
-          <section className={s.accountSection}>a</section>
+          <section className={s.accountSection}>
+            <AccountFormBuilder
+              form={[
+                {
+                  context: "button",
+                  label: "계정 인증 조회하기",
+                  name: "joinParty",
+                  icon: "Mailbox",
+                  actionTypeId: "joinParty",
+                },
+              ]}
+            />
+          </section>
           <section className={s.productSection}>
             <ProductDescription description={subscription.plan.description} />
             {subscription.plan.type === PlanType.PARTY && (

@@ -55,7 +55,7 @@ export default function SubscriptionDetail() {
                       secure: true,
                     },
                   ],
-                  troubleSupportUrl: "",
+                  troubleSupportUrl: "https://www.google.com",
                 },
                 {
                   context: "button",

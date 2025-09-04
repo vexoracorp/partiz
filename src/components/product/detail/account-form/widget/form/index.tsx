@@ -1,16 +1,6 @@
-import { Eye, EyeOff, MessageCircleQuestion } from "lucide-react";
+import { MessageCircleQuestion } from "lucide-react";
 
-import {
-  Button,
-  FlexAlign,
-  FlexJustify,
-  HStack,
-  Input,
-  Typo,
-  VStack,
-} from "@/components/ui";
-import { useFieldVisibility } from "@/hooks/useFieldVisibility";
-import { getDynamicIcon } from "@/utils/lucide";
+import { Button, Input, Typo } from "@/components/ui";
 
 import type { FormProps } from "../../account-form.type";
 
@@ -49,7 +39,7 @@ export default function FormWidget(props: FormProps) {
       <div>
         <a className={s.troubleSupportUrl} href={props.troubleSupportUrl}>
           <MessageCircleQuestion />{" "}
-          <Typo.Subtext>제출하면 어떻게 되는건가요?</Typo.Subtext>
+          <Typo.Subtext>어떤 방식으로 진행되나요?</Typo.Subtext>
         </a>
       </div>
     </div>

@@ -1,11 +1,5 @@
 import { type PartyCardProps } from "./party-card.type";
-import {
-  checkSubscribed,
-  getCardVariant,
-  getEndDate,
-  getMemberInfo,
-  getProductInfo,
-} from "./party-card.util";
+import { getPartyCardData } from "./party-card.util";
 import {
   PartyCardButton,
   PartyCardHead,
@@ -16,11 +10,7 @@ import {
 import s from "./styles.module.scss";
 
 export default function PartyCard(props: PartyCardProps) {
-  const product = getProductInfo(props);
-  const member = getMemberInfo(props);
-  const endDate = getEndDate(props);
-  const isSubscribed = checkSubscribed(props);
-  const isParty = getCardVariant(props) === "party";
+  const { product, member, endDate, isSubscribed, isParty } = getPartyCardData(props);
 
   return (
     <a className={s.container} onClick={props.onClick}>

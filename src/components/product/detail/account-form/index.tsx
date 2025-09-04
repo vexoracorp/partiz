@@ -2,6 +2,7 @@ import { Button, VStack } from "@/components/ui";
 import { getDynamicIcon } from "@/utils/lucide";
 
 import AccountWidget from "./widget/account";
+import FormWidget from "./widget/form";
 import type { AccountFormItem } from "./account-form.type";
 
 interface AccountFormBuilderProps {
@@ -10,7 +11,7 @@ interface AccountFormBuilderProps {
 
 export default function AccountFormBuilder({ form }: AccountFormBuilderProps) {
   return (
-    <VStack style={{ width: "370px" }}>
+    <VStack style={{ width: "370px" }} gap={14}>
       {form.map((item) => {
         switch (item.context) {
           case "button":
@@ -24,10 +25,13 @@ export default function AccountFormBuilder({ form }: AccountFormBuilderProps) {
                 {item.label}
               </Button>
             );
-            break;
 
           case "account":
             return <AccountWidget {...item} />;
+
+          case "form":
+            return <FormWidget {...item} />;
+
           default:
             break;
         }

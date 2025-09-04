@@ -38,13 +38,6 @@ export default function SubscriptionDetail() {
             <AccountFormBuilder
               form={[
                 {
-                  context: "button",
-                  label: "계정 인증 조회하기",
-                  name: "joinParty",
-                  icon: "Mailbox",
-                  actionTypeId: "joinParty",
-                },
-                {
                   context: "account",
                   product: subscription.product,
                   field: [
@@ -62,6 +55,27 @@ export default function SubscriptionDetail() {
                     },
                   ],
                   troubleSupportUrl: "",
+                },
+                {
+                  context: "button",
+                  label: "계정 인증 조회하기",
+                  name: "joinParty",
+                  icon: "Mailbox",
+                  actionTypeId: "joinParty",
+                },
+                {
+                  context: "form",
+                  title: "본인 계정 적용 이메일",
+                  product: subscription.product,
+                  description: "계정 적용을 위해 아래 이메일을 입력해주세요",
+                  field: [
+                    {
+                      name: "이메일",
+                      placeholder: "이메일을 입력해주세요.",
+                    },
+                  ],
+                  troubleSupportUrl: "https://www.google.com",
+                  actionUrl: "https://www.google.com",
                 },
               ]}
             />

@@ -15,6 +15,9 @@
 
 .accountSection {
     grid-area: account;
+
+    display: flex;
+    justify-content: flex-end;
 }
 
 .productSection {

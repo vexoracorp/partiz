@@ -15,4 +15,14 @@ export interface AccountProps {
   troubleSupportUrl: string;
 }
 
-export type AccountFormItem = ButtonProps | AccountProps;
+export interface FormProps {
+  context: "form";
+  product: Product;
+  title: string;
+  description: string;
+  field: { name: string; placeholder: string }[];
+  troubleSupportUrl: string;
+  actionUrl: string;
+}
+
+export type AccountFormItem = ButtonProps | AccountProps | FormProps;

@@ -35,6 +35,7 @@ export default function Subscription() {
           <Typo.Headline as="h2">내 구독</Typo.Headline>
           <HStack gap={24} wrap>
             {subscriptions.map((subscription) => {
+              console.log("fuckas", subscription);
               return (
                 <PartyCard
                   context="subscription"

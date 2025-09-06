@@ -81,3 +81,22 @@ line-height: 20px;
   text-decoration: line-through;
   color: $color-text-subtle;
 }
+
+.appliedPromotionContainer {
+  display: flex;
+  padding: $spacing-12 $spacing-14;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: $radius-12;
+  border: 1px solid $color-border-subtle;
+  min-height: 48px;
+}
+
+.promotionDiscount {
+  color: #0EA5E9;
+}
+
+
+.questionIcon {
+  cursor: pointer;
+}

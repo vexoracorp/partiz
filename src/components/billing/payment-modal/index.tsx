@@ -1,4 +1,4 @@
-import { PartyPopper, MessageCircleQuestion } from "lucide-react";
+import { PartyPopper, MessageCircleQuestion, X, TicketPercent } from "lucide-react";
 import { useState } from "react";
 
 import {
@@ -12,6 +12,7 @@ import {
   VStack,
 } from "@/components/ui";
 import type { Plan, Product } from "@/types/product";
+import { validatePromotionCode, type PromotionCode } from "@/mock/promotion";
 
 import styles from "./styles.module.scss";
 
@@ -28,16 +29,35 @@ export default function PaymentModal({
 }: PaymentModalProps) {
   const [pointsToUse, setPointsToUse] = useState(0);
   const [promotionCode, setPromotionCode] = useState("");
+  const [appliedPromotion, setAppliedPromotion] = useState<PromotionCode | null>(null);
+  
   // 계산 관련 상수들
   const userPoints = 500; // 보유 포인트
   const originalPrice = 32000; // 원가
   const participationDays = 31; // 참여일수
   const savingsAmount =
     originalPrice - ((plan?.price || 0) * participationDays) / 30; // 절약 금액 (대략 계산)
-  const finalAmount = Math.max(0, (plan?.price || 0) - pointsToUse); // 최종 결제 금액
+  
+  const promotionDiscount = appliedPromotion?.discount || 0;
+  const finalAmount = Math.max(0, (plan?.price || 0) - pointsToUse - promotionDiscount); // 최종 결제 금액
 
   const handleUseAllPoints = () => {
     setPointsToUse(Math.min(userPoints, plan?.price || 0));
+  };
+
+  const handleApplyPromotion = () => {
+    const validPromotion = validatePromotionCode(promotionCode);
+    
+    if (validPromotion) {
+      setAppliedPromotion(validPromotion);
+      setPromotionCode("");
+    } else {
+      alert("유효하지 않은 프로모션 코드입니다.");
+    }
+  };
+
+  const handleRemovePromotion = () => {
+    setAppliedPromotion(null);
   };
 
   const handlePayment = () => {
@@ -83,30 +103,49 @@ export default function PaymentModal({
               const numValue = parseInt(value) || 0;
               setPointsToUse(Math.min(numValue, userPoints, plan?.price || 0));
             }}
-            size="large"
+            size="medium"
             fullWidth
           />
-          <Button variant="primary" size="large" onClick={handleUseAllPoints}>
+          <Button variant="primary" size="medium" onClick={handleUseAllPoints}>
             전액 사용
           </Button>
         </HStack>
       </VStack>
       {/* 쿠폰 입력 섹션 */}
-<VStack gap={10} fullWidth>
-          <Typo.Body className={styles.sectionTitle}>프로모션 코드</Typo.Body>
+      <VStack gap={10} fullWidth>
+        <Typo.Body className={styles.sectionTitle}>프로모션 코드</Typo.Body>
 
-        <HStack gap={10} fullWidth>
-          <Input
-            placeholder="코드를 입력하세요"
-            value={promotionCode}
-            onChange={(e) => setPromotionCode(e.target.value)}
-            size="large"
-            fullWidth
-          />
-          <Button variant="primary" size="large" onClick={() => console.log("적용")}>
-            적용
-          </Button>
-        </HStack>
+        {appliedPromotion ? (
+          <VStack fullWidth className={styles.appliedPromotionContainer}>
+            <HStack justify={FlexJustify.Between} align={FlexAlign.Center} fullWidth>
+              <HStack gap={8} align={FlexAlign.Center} >
+                <TicketPercent size={19} />
+                <Typo>
+                  {appliedPromotion.code}
+                </Typo>
+              </HStack>
+              <VStack align={FlexAlign.End}>
+                <HStack gap={6} align={FlexAlign.Center}>
+                <Typo className={styles.promotionDiscount}>{appliedPromotion.discount.toLocaleString()}원 할인</Typo>
+                <X size={19} onClick={handleRemovePromotion} color="#7D7D7D" />
+                </HStack> 
+              </VStack>
+            </HStack>
+          </VStack>
+        ) : (
+          <HStack gap={10} fullWidth>
+            <Input
+              placeholder="코드를 입력하세요"
+              value={promotionCode}
+              onChange={(e) => setPromotionCode(e.target.value)}
+              size="medium"
+              fullWidth
+            />
+            <Button variant="primary" size="medium" onClick={handleApplyPromotion}>
+              적용
+            </Button>
+          </HStack>
+        )}
       </VStack>
       {/* 구분선 */}
       <div className={styles.divider} />

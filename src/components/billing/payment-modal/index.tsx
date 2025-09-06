@@ -28,9 +28,10 @@ export default function PaymentModal({
   onClose,
 }: PaymentModalProps) {
   const [pointsToUse, setPointsToUse] = useState(0);
+
   const [promotionCode, setPromotionCode] = useState("");
   const [appliedPromotion, setAppliedPromotion] = useState<PromotionCode | null>(null);
-  
+
   // 계산 관련 상수들
   const userPoints = 500; // 보유 포인트
   const originalPrice = 32000; // 원가
@@ -97,7 +98,15 @@ export default function PaymentModal({
         <HStack gap={10} fullWidth>
           <Input
             placeholder="0P"
-            value={pointsToUse > 0 ? `${pointsToUse}P` : ""}
+            value={
+              isFocused
+                ? pointsToUse > 0
+                  ? pointsToUse.toString()
+                  : ""
+                : pointsToUse > 0
+                ? `${pointsToUse}P`
+                : ""
+            }
             onChange={(e) => {
               const value = e.target.value.replace(/[^0-9]/g, "");
               const numValue = parseInt(value) || 0;

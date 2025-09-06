@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 
+import { Typo } from "@/components/ui";
 import s from "./style.module.scss";
 
 export type CheckboxSize = "sm" | "md" | "lg";
@@ -130,16 +131,20 @@ export default function Checkbox(props: CheckboxProps) {
 
       {(label || description || error) && (
         <span className={s.texts}>
-          {label && <span className={s.label}>{label}</span>}
+          {label && (
+            <Typo.Body className={s.label}>
+              {label}
+            </Typo.Body>
+          )}
           {description && (
-            <span id={descriptionId} className={s.description}>
+            <Typo.Caption id={descriptionId} className={s.description}>
               {description}
-            </span>
+            </Typo.Caption>
           )}
           {error && (
-            <span id={errorId} className={s.errorText}>
+            <Typo.Caption id={errorId} className={s.errorText}>
               {error}
-            </span>
+            </Typo.Caption>
           )}
         </span>
       )}

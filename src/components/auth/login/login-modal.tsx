@@ -2,10 +2,10 @@ import { Button, Spacing, Typo } from "@/components/ui";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import s from "./styles.module.scss";
-import { useState } from "react";
+//import { useState } from "react";
 
 export default function LoginModal() {
- const [isKorea, setIsKorea] = useState(true);//한유찬이 로그인 누를때마다 알잘딱 나라 보내준다고함.
+ //const [isKorea, setIsKorea] = useState(true);//한유찬이 로그인 누를때마다 알잘딱 나라 보내준다고함.
   return (
     <>
       <div className={s.container}>
@@ -29,7 +29,8 @@ export default function LoginModal() {
         >
           구글로 시작하기
         </Button>
-        {isKorea && (<><Button
+        {/* {isKorea && ()} */}
+        <Button
           size="large"
           variant="secondary"
           fullWidth
@@ -61,7 +62,6 @@ export default function LoginModal() {
         >
           네이버로 시작하기
         </Button>
-        </>)}
         
         </div>
         <Spacing size={8} />

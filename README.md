@@ -36,7 +36,7 @@ Partiz is an innovative service that helps people save money on subscriptions fo
 ## 🔗 Links
 
 - **Live Demo**: [Partiz Website](https://partiz.vercel.app/)
-- **Contact**: partiz@example.com
+- **Contact**: ""
 
 ---
 

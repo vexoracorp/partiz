@@ -1,0 +1,88 @@
+.container {
+    width: 100%;
+    max-width: 370px;
+
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-20;
+
+    padding: $spacing-20;
+
+    border-radius: $radius-20;
+
+    border: 1px solid $color-border;
+    background: $color-surface;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-10;
+
+    .image {
+        width: 26px;
+    
+        border-radius: $radius-8;
+    
+        aspect-ratio: 1/1;
+    }
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+
+    gap: $spacing-8;
+
+    .field {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background-color: $color-surface-subtle;
+
+        border-radius: $radius-12;
+
+        padding: $spacing-14 $spacing-16;
+
+        .name {
+            color: $color-text-subtle;
+        }
+
+        .eye {
+            color: $color-text-subtle;
+        }
+
+        .eyeButton {
+            background: none;
+            border: none;
+            padding: 4px;
+            cursor: pointer;
+        }
+
+        .hiddenValue {
+            font-family: monospace;
+            letter-spacing: 1px;
+            color: $color-text-subtle;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+.troubleSupportUrl {
+    color: $color-text-subtle;
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    svg {
+        width: 16px;
+        aspect-ratio: 1/1;
+    }
+}

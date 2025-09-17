@@ -22,6 +22,10 @@ const Router = createBrowserRouter([
     element: <Content />,
   },
   {
+    path: "/my-contents",
+    element: <Content />,
+  },
+  {
     path: "/subscription",
     element: <Subscription />,
   },

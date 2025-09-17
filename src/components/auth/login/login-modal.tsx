@@ -65,7 +65,7 @@ export default function LoginModal() {
         
         </div>
         <Spacing size={8} />
-        <Link to="/auth/login/number" className={s.number_container}>
+        <Link to="/auth/login" className={s.number_container}>
             <Typo.BodyLarge>전화번호로 시작하기</Typo.BodyLarge> <ChevronRight size={21} />
         </Link>
       </>
